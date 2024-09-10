@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabulky</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        tfoot {
+            background-color: aqua;
+        }
+
+        thead{
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <!-- Tabulka -->
+    <table>
+        <!-- tr - table row; td - table cell; th - table heading -->
+        <thead>
+            <tr>
+                <th>Jméno:</th>
+                <th>Škola:</th>
+                <th>Ročník:</th>
+                <!-- colspan určuje roztažení buňky přes sloupce -->
+                <th colspan="3" rowspan="2">Body z jednotlivých kol</th>
+                <!-- rowspan určuje roztaření buňky přes řádky -->
+            </tr>
+            <tr>
+                <td colspan="3">Osobní údaje soutěžícího</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Jan Omáčka</td>
+                <td>Delta</td>
+                <td>1.</td>
+                <td>20</td>
+                <td>30</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td>Jarmila Hlučná</td>
+                <td>Kyberna</td>
+                <td>2.</td>
+                <td>42</td>
+                <td>12</td>
+                <td>78</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <td colspan="3">Celkový počet bodů</td>
+            <td>62</td>
+            <td>42</td>
+            <td>128</td>
+        </tfoot>
+    </table>
+</body>
+</html>
