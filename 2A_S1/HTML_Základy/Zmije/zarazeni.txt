@@ -1,0 +1,11 @@
+Vědecká klasifikace
+Říše: 	živočichové (Animalia)
+Kmen: 	strunatci (Chordata)
+Podkmen: 	obratlovci (Vertebrata)
+Třída: 	plazi (Reptilia)
+Řád: 	šupinatí (Squamata)
+Podřád: 	hadi (Serpentes)
+Čeleď: 	zmijovití (Viperidae)
+Rod: 	zmije (Daboia)
+Binomické jméno
+Daboia russelii
