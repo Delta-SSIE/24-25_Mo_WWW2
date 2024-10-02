@@ -1,5 +1,8 @@
 p {
-    color: rgb(30, 0, 255);
-    font-size: 20px;
-    font-family: 'Times New Roman', Times, serif;
+    color: rgb(0, 42, 0);
+    font-size: 15px;
+}
+
+body {
+    background-color: #09006f;
 }
