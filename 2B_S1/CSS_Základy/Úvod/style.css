@@ -1,5 +1,45 @@
+* {
+    background-color: black;
+}
+
 p {
     color: rgb(211, 43, 43);
-    font-size: 50px;
-    font-family: 'Times New Roman', Times, serif, sans-serif;
+    font-size:12pt;
+    font-family: Helvetica, sans-serif;
+    text-align: justify;
+    line-height: 150%;
+}
+
+h1, h2 {
+    font-size:2pc;
+    color: white;
+    font-weight: bold;
+    font-style: italic;
+}
+
+#super_nadpis {
+    color: lightgreen;
+    font-size: 3rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-shadow: 5px 5px 5px blue;
+}
+
+.super_text {
+    color: aqua;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: azure;
+}
+
+#nej p {
+    color: blue;
+}
+
+ul > li {
+    color: yellow;
+}
+
+table, td, tr {
+    border: 1px solid white;
+    color: white;
+    border-collapse: collapse;
 }
