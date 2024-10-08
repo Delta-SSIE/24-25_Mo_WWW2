@@ -1,6 +1,39 @@
 
+*{
+    background-color: #000000;
+}
+
 p {
-    color: #111A00;
-    background-color: #567714;
+    color: #ffffff;
+    background-color: #13ed1e;
     font-size: 12px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px;
+    text-align: justify;
+    text-indent: 1rem;
+}
+
+h1, h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+}
+
+
+.trida1 {
+    background-color: aqua;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1em;
+}
+
+#super-nadpis {
+    background-color: gold;
+    color: #13ed1e;
+    font-size: 50px;
+    text-shadow: 3px 3px 3px blue;
+}
+
+p a {
+    color: yellow;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
 }
