@@ -1,7 +1,61 @@
 p {
     color: rgb(78, 203, 44);
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 24pt;
+    text-align: justify;
+    line-height: 1.5;
 }
 
 body {
     background-color: #bc615e4c;
+}
+
+h1{
+    font-family: 'Sixtyfour Convergence', fantasy;
+    font-size: 48pt;
+}
+
+* {
+    color: blue;
+}
+
+.super_text {
+    color: blueviolet;
+    font-size: 12pt;
+    font-style: italic;
+}
+
+#super_id {
+    color: aqua;
+    font-size: 32pt;
+    font-weight: bold;
+}
+
+.super_odstavec p {
+    color:white;
+    font-size: 50pt;
+}
+
+ol > li {
+    color: red;
+    font-size: 24pt;
+}
+
+h2 {
+    color: red;
+    font-size: 42pt;
+    text-shadow: 2pt 2pt 2pt blue;    
+}
+
+ol {
+    list-style-type: upper-roman;
+}
+
+ul {
+    list-style-type: square;
+}
+
+table, td, th {
+    border: 3pt solid black;
+    border-collapse: collapse;
 }
