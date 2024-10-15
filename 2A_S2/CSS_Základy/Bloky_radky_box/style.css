@@ -1,7 +1,10 @@
 
 img {
-    max-width: 500px;
+    max-width: 1000px;
     min-width: 100px;
+    display: block;
+    float: left;
+    visibility: hidden;
 }
 
 /*
