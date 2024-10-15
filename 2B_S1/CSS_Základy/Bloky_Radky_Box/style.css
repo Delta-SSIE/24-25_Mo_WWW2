@@ -10,6 +10,10 @@
     border: 3px dotted red;
     padding: 10px 20px 30px 40px;
     margin: 10px 30px;
+    position: relative;
+    top: 200px;
+    left: 100px;
+    z-index: -1;
 }
 
 .blokVradku {
@@ -17,4 +21,29 @@
     width: 500px;
     border: 3px solid black;
     margin: 0 20px;
+}
+
+#pevnaVelikost {
+    width: 200px;
+    height: 200px;
+    font-size: 20px;
+    border: 2px solid green;
+    overflow: auto;
+}
+
+#pruznaVelikost {
+    max-width: 1000px;
+    max-height: 1000px;
+    min-width: 100px;
+    min-height: 100px;
+    border: 1px solid red;
+}
+
+#obtekani  {
+    float: left;
+    visibility: hidden;
+}
+
+#neObtekej {
+    clear: left;
 }
