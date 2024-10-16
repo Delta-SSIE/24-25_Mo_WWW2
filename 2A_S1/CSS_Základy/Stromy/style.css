@@ -1,0 +1,44 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: lightgrey;
+}
+
+.strom {
+  background-color: white;
+  width: 330px;
+  height: 500px;
+  display: inline-block;
+  vertical-align: top;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid black;
+}
+
+.nazev {
+  font-weight: bold;
+  font-size: 25px;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.plod, .vyska {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.hodnota {
+  font-style: italic;
+}
+
+.popis {
+  width: 50%;
+  display: inline-block;
+  margin: 5px 0px;
+}
+
+.strom img {
+  margin: 5px auto;
+  display: block;
+}
