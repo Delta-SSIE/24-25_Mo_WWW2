@@ -13,6 +13,64 @@
     border: 3px solid red;
     margin: 10px 20px;
     padding-left: 5px;
-    width: 500pxs;
+    width: 500px;
     display: inline-block;
+}
+
+.pevna_velikost {
+    width: 50px;
+    height: 50px;
+    border: 3px solid green;
+    overflow: scroll;
+}
+
+.rela_velikost {
+    min-width: 100px;
+    max-width: 500px;
+    min-height: 100px;
+    max-height: 500px;
+    border: 3px solid black;
+}
+
+#rel {
+    border: 3px solid red;
+    width: 100px;
+    height: 100px;
+    display: block;
+    position: relative;
+    top: 50px;
+    left: 100px;
+}
+
+#fix {
+    border: 3px solid green;
+    width: 100px;
+    height: 100px;
+    display: block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+}
+
+#abs {
+    border: 3px solid blue;
+    width: 100px;
+    height: 100px;
+    display: block;
+    position: absolute;
+    top: 500px;
+    left: 500px;
+    z-index: -2;
+}
+
+#obtekani {
+    width: 100px;
+    height: 300px;
+    float: left;
+    visibility: hidden;
+}
+
+#ne-obtekat {
+    clear: left;
 }
