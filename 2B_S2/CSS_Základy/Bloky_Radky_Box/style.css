@@ -1,0 +1,18 @@
+.blok {
+    display: block;
+    border: 3px solid blue;
+    padding: 10px 30px 50px 70px;
+    margin: auto auto;
+}
+
+.radek {
+    display: inline;
+}
+
+.bloky {
+    border: 3px solid red;
+    margin: 10px 20px;
+    padding-left: 5px;
+    width: 500pxs;
+    display: inline-block;
+}
