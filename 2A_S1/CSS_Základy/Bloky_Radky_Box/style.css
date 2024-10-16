@@ -16,3 +16,57 @@
     width: 500px;
     display: inline-block;
 }
+
+#pevna_velikost {
+    width: 200px;
+    height: 200px;
+    border: 3px solid red;
+    overflow:scroll;
+}
+
+#rel_velikost {
+    max-width: 500px;
+    min-width: 100px;
+    max-height: 500px;
+    min-height: 100px;
+    border: 3px solid blue;
+}
+
+.obr {
+    width: 100px;
+    height: 100px;
+}
+
+#rel {
+    border: 2px dashed green;
+    position: relative;
+    top: 50px;
+    left: 30px;
+}
+
+#fix {
+    border: 2px dashed red;
+    position: fixed;
+    top: 500px;
+    left: 500px;
+    z-index: -1;
+}
+
+
+#abs {
+    border: 2px dashed blue;
+    position: absolute;
+    top: 500px;
+    left: 500px;
+    z-index: -2;
+}
+
+#obtekani {
+    float: left;
+    height: 250px;
+    visibility: hidden;
+}
+
+#ne-ob {
+    clear: left;
+}
