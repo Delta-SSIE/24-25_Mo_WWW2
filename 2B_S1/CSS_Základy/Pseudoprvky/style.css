@@ -1,0 +1,56 @@
+a:link {
+    color: red;
+    font-size: 20px;
+}
+
+a:visited {
+    color: black;
+    font-size: 10px;
+}
+
+a:hover {
+    background-color: blue;
+}
+
+a:active {
+    background-color: red;
+}
+
+#mizeni p {
+    display: none;
+    background-color: yellow;
+    padding: 20px;
+  }
+  
+  #mizeni   div:hover p {
+    display: block;
+  }
+
+p:first-child {
+    color: gold;
+  }
+
+p::first-letter  {
+    color: red;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li::after {
+    content: "😈";
+}
+
+li::before {
+    content: "😈";
+}
+
+
+a::after{
+    content: " (" attr(href) ")";
+}
+
+h1::before {
+    content: attr(class) " ";
+}
