@@ -1,0 +1,35 @@
+
+a:hover {
+    color: blue;
+    font-size: 20px;
+    background-color: red;
+}
+
+.active {
+    width: 500px;
+    height: 150px;
+    background-color: bisque;
+}
+
+.active:hover{
+    background-color: blue;
+    width: 600px;
+}
+
+p::first-letter {
+    color: red;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li::before {
+    content: "🌹";
+}
+
+li::after {
+    content: "🌹";
+}
