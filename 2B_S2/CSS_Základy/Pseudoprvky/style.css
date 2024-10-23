@@ -1,0 +1,61 @@
+a {
+    color: black;
+    font-weight: bold;
+}
+
+a:visited {
+    color: blue;
+}
+
+a:active {
+    background-color: red;
+    color: green;
+}
+
+a:hover {
+    font-size: 30px;
+    color: violet;
+}
+
+.schovani p {
+    display: none;
+    background-color: yellow;
+    padding: 20px;
+  }
+  
+.schovani:hover p {
+    display: block;
+  }
+
+p:first-child {
+    color: blue;
+}
+
+p::first-line {
+    color: red;
+}
+
+p::first-letter {
+    font-size: 35px;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li::before {
+    content: "☠️";
+}
+
+li::after {
+    content: "☠️";
+}
+
+a::after {
+    content: " " attr(href);
+}
+
+p::before {
+    content: attr(class) " ";
+}
