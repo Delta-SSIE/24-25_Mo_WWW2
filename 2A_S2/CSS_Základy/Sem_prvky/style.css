@@ -1,0 +1,27 @@
+header {
+    border: 2px solid black;
+    background-color: gold;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 50px;
+}
+
+main {
+    background-color: bisque;
+    text-align: center;
+}
+
+section {
+    border: 1px solid black;
+    width: 300px;
+    display: inline-block;
+    text-align: justify;
+}
+
+footer {
+    background-color: aqua;
+    border: 1px solid black;
+    
+}

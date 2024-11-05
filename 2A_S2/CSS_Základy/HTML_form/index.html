@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    <form>
+        <fieldset>
+        <legend>Osobní údaje:</legend>
+        <label for="name">Jméno a přijmení: </label>
+        <input id="name" type="text" name="user_name" autofocus required>
+        <input type="date">
+        <input type="password">
+    </fieldset>
+
+        <label for="itT">IT technik</label>
+        <input type="radio" name="pozice" id="itT">
+        <label for="sek">Sekretář/ka</label>
+        <input type="radio" name="pozice" id="sek">
+
+        <label for="Par">Pardubice</label>
+        <input type="checkbox" name="mesto" id="Par">
+        <label for="Hra">Hradec Králové</label>
+        <input type="checkbox" name="mesto" id="Hra">
+
+        <label for="plat">Vyber si ideální platové ohodnocení:</label>
+        <select name="fin" id="plat">
+            <optgroup label="Nizký plat">
+                <option value="1" selected>25–30</option>
+                <option value="2">30–35</option>
+            </optgroup>
+            <optgroup label="Střední plat">
+                <option value="3">35–40</option>
+            </optgroup>
+        </select>
+
+        <label for="mot_dop">Motivační dopis</label>
+        <textarea name="" id="mot_dop"></textarea>
+
+        <input type="text" list="firmy" placeholder="Název firmy">
+
+        <datalist id="firmy">
+            <option value="Apple"></option>
+            <option value="IBM"></option>
+            <option value="Microsoft"></option>
+        </datalist> 
+
+        <input type="submit" value="Odeslat">
+    </form>
+</body>
+</html>
