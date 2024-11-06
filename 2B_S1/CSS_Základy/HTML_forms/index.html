@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+    <style>
+        input {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+
+        <fieldset>
+        <legend>Osobní údaje uchazeče o zaměstnání:</legend>
+            <label for="name">Jméno a přijmení:</label>
+            <input type="text" name="name" id="name" autofocus required>
+
+            <label for="zak">Zakladní</label>
+            <input type="radio" name="vzdelani" id="zak" value="Z">
+            <label for="stred">Střední škola s maturitou</label>
+            <input type="radio" name="vzdelani" id="stred" value="S">
+            <label for="vys">Vysoká škola (Bc.)</label>
+            <input type="radio" name="vzdelani" id="vys" value="V">
+
+            <label for="city">Město, kde žiješ</label>
+            <select name="city" id="city">
+                <optgroup label="Pardubický kraj">
+                    <option value="Pard">Pardubice</option>
+                </optgroup>
+                <optgroup label="Královehradecký kraj">
+                    <option value="Hrad">Hradec Králové</option>
+                    <option value="Jar">Jaroměř</option>
+                </optgroup>
+            </select>
+        </fieldset>
+        <label for="mot">Motivační dopis</label>      
+        <textarea name="mot_dopis" id="mot"></textarea>
+        <label for="pozice">Jakou pozici chceš ve firmě zastávat: </label>  
+        <input type="text" name="pozice" id="pozice" list="nab_pozice">
+
+        <datalist id="nab_pozice">
+            <option value="Poradce"></option>
+            <option value="Sekretář"></option>
+            <option value="Webdesigner"></option>
+        </datalist>
+
+        <input type="submit" value="Odeslat">
+    </form>
+</body>
+</html>
