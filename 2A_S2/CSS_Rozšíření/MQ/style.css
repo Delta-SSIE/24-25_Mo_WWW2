@@ -60,3 +60,36 @@ footer {
 }
 
 /* MQ */
+
+@media only screen and (max-width:800px) {
+
+    header {
+        position: static;
+        background-color: aqua;
+    }
+
+    main {
+        margin-top: 0px;
+    }
+    
+    .navbar ul {
+        display: block;
+        color: black;
+        font-size: larger;
+    }
+
+    section {
+        display: block;
+        width: 250px;
+    
+    }
+}
+
+@media print {
+
+   header {
+        background-color: blue;
+        position: static;
+    }
+
+}
