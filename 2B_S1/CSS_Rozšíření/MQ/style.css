@@ -60,3 +60,40 @@ footer {
 }
 
 /* MQ */
+@media screen and (max-width:20em) {
+    header {
+        background: blue;
+        position: static;
+        font-size: smaller;
+    }
+
+    main {
+        margin-top: 0;
+    }
+
+    .navbar ul {
+        display: block;
+    }
+
+    .section {
+        width: 80vw;
+        font-size: smaller;
+        padding: 0 0;
+    }
+}
+
+@media screen and (max-width:40em) and (min-width:20em) {
+    header {
+        background: red;
+        position: static;
+    }
+
+    main {
+        margin-top: 0;
+    }
+
+    .section {
+        width: 80vw;
+        padding: 0 0;
+    }
+}
