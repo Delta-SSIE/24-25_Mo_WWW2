@@ -97,3 +97,12 @@ footer {
         padding: 0 0;
     }
 }
+
+@media print {
+    body {
+        font-family: 'Courier New', Courier, monospace;
+    }
+    header {
+        position: static;
+    }
+}
