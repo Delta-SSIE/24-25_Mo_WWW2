@@ -1,0 +1,65 @@
+@keyframes barva {
+    from {
+        background-color: yellow;
+        
+    }
+    to {
+        background-color: blue;
+        transform: translateX(300px);
+    }
+}
+
+@keyframes pohyb {
+    0% {
+        background-color: red;
+    }
+    25% {
+        background-color: blue;
+        transform: translateX(50px);
+    }
+    50% {
+        background-color: green;
+        transform: translateX(100px);
+    }
+    75% {
+        background-color: yellow;
+        transform: translateX(150px);
+    }
+    100% {
+        background-color: black;
+        transform: translateX(200px);
+    }
+}
+
+#box {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    transition-delay: 2s;
+    transition: background-color 5s, transform 10s;
+}
+
+#box:hover {
+    background-color: blue;
+    transform: rotate(45deg);
+}
+
+#box2 {
+    width: 50px;
+    height: 50px;
+    animation-name: barva;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+#box3 {
+    width: 50px;
+    height: 50px;
+    animation-name: pohyb;
+    animation-duration: 2s;
+    animation-delay: 2s;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+}
+
+
