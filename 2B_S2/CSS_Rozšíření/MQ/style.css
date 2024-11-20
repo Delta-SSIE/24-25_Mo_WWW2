@@ -1,0 +1,139 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    border-color: #fff;
+    border-radius: 5px;
+}
+
+.section {
+    padding: 2rem;
+    text-align: justify;
+    display: inline-block;
+    width: 750px;
+
+}
+
+main {
+    text-align: center;
+    margin-top: 100px;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+/* MQ */
+@media screen and (max-width:1000px) and (min-width:400px) {
+    header {
+        background-color: blue;
+        position: static;
+    }
+
+    main {
+        margin-top: 0px;
+    }
+
+    .section h2 {
+        text-align: center;
+    }
+    
+}
+
+@media screen and (max-width:400px){
+    header {
+        background-color: red;
+        position: static;
+    }
+
+    main {
+        margin-top: 0px;
+    }
+
+    .section h2 {
+        text-align: center;
+    }
+
+    .section {
+        width: 80vw;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    .navbar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: block;
+    }
+
+    .navbar ul li a {
+        width: 100%;
+        display: block;
+    }
+
+    footer {
+        display: none;
+    }
+}
+
+@media print {
+    body {
+        font-family: 'Times New Roman', Times, serif;
+    }
+    
+    header {
+        background-color: red;
+        position: static;
+    }
+
+    main {
+        margin-top: 0px;
+    }
+
+    .section {
+        width: 80vw;
+        padding-top: 0px;
+        padding-bottom: 0px;
+    }
+
+    .navbar {
+        display: none;
+    }
+}
