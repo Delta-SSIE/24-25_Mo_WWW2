@@ -1,0 +1,78 @@
+#box {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    transform: translate(50px) rotate(80deg);
+}
+
+#box2 {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    transition: background-color 5s, transform 10s, height 3s;
+}
+
+#box2:hover {
+    background-color: blue;
+    transform: translateX(100px);
+    height: 200px;
+
+}
+
+#jabko {
+    height: 50px;
+    width: 50px;
+    opacity: 0.5;
+    transition: all 2s 0.5s ease-in-out;
+}
+
+#jabko:hover {
+    height: 250px;
+    width: 250px;
+    opacity: 1;
+}
+
+#box3 {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    animation: color 10s infinite reverse;
+}
+
+#box4 {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    animation: complex 2s 3 alternate forwards;
+}
+
+@keyframes color {
+    from {
+    }
+    to {
+        background-color: blue;
+        transform: translateX(200px);
+    }
+}
+
+@keyframes complex {
+    25% {
+        transform: translateX(50px);
+        background-color: blue;
+    }
+    50% {
+        transform: translateX(100px);
+        background-color: green;
+    }
+    75% {
+        transform: translateX(150px);
+        background-color: yellow;
+    }
+    100% {
+        transform: translateX(200px);
+        background-color: black;
+    }
+}
+
+
+
