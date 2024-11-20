@@ -1,0 +1,77 @@
+#box {
+    background-color: red;
+    width: 50px;
+    height: 50px;
+    transition: transform 5s, background-color 10s, height 20s;
+}
+
+#box:hover {
+    background-color: aqua;
+    transform: scale(2);
+    height: 200px;
+}
+
+#jabko {
+    height: 50px;
+    width: 50px;
+    opacity: 0.5;
+    transition: all 3s;
+    transition-delay: 1s;
+    transition-timing-function: ease-in-out;
+}
+
+#jabko:hover {
+    opacity: 1;
+    width: 100px;
+    height: 100px;
+}
+
+#box2 {
+    background-color: black;
+    width: 50px;
+    height: 50px;
+    animation: color 3s;
+}
+
+#box2 {
+    background-color: black;
+    width: 50px;
+    height: 50px;
+    animation: complex 3s;
+    animation-iteration-count: 3;
+    animation-direction: alternate;
+    animation-fill-mode: forwards;
+}
+
+@keyframes color {
+    from {
+        background-color: red;
+    }
+    to {
+        background-color: blue;
+        transform: scale(2);
+    }
+}
+
+@keyframes complex {
+
+    0% {
+        background-color: red;
+    }
+    25% {
+        background-color: blue;
+        transform: translateX(100px);
+    }
+    50% {
+        background-color: green;
+        transform: translateX(150px);
+    }
+    75% {
+        background-color: yellow;
+        transform: translateX(200px);
+    }
+    100% {
+        background-color: black;
+        transform: translateX(250px);
+    }
+}
