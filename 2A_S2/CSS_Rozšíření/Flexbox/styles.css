@@ -1,0 +1,70 @@
+/* Reset */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .example-container {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+  }
+  .box {
+    background: #007BFF;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px;
+  }
+  .controls {
+    margin: 10px 0;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  select, input[type="range"] {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.9rem;
+    color: #777;
+  }
+
+  .example-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    height: 200px;
+  }
+
+  #item1 {
+    order: 1;
+    flex-grow: 5;
+  }
+
+  
+  #item2 {
+    order: 2;
+    flex-grow: 0;
+  }
+
+  .item {
+    flex-grow: 1;
+    flex-basis: 200px;
+  }
+
