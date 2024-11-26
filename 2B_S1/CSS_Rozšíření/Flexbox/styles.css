@@ -16,6 +16,7 @@ body, h1, h2, p {
     background-color: #f4f4f4;
     margin-bottom: 20px;
     border: 1px solid #ddd;
+    height: 200px;
   }
   .box {
     background: #007BFF;
@@ -23,6 +24,7 @@ body, h1, h2, p {
     padding: 20px;
     text-align: center;
     border-radius: 5px;
+    height: 20px;
   }
   .controls {
     margin: 10px 0;
@@ -48,5 +50,23 @@ body, h1, h2, p {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+    align-items: center;
   }
 
+#item1 {
+  align-self: end;
+  order: 2;
+  flex-shrink: 2;
+}
+
+#item2 {
+  align-self: flex-start;
+  order: -1;
+  flex-grow: 1;
+  flex-basis: 200px;
+}
+
+
+#item3 {
+  flex-shrink: 2;
+}
