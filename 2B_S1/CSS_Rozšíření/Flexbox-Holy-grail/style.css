@@ -1,0 +1,49 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+header,
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 1em;
+}
+
+main {
+  margin: 0;
+  display: flex;
+  text-align: justify;
+  justify-content: space-evenly;
+}
+
+main>section {
+  padding: 1em;
+  margin: 0;
+}
+
+@media screen and (max-width:800px) {
+  main {
+    flex-direction: column;
+    text-align: center;
+    justify-content: flex-start;
+  }
+  
+  #center {
+    order: -1;
+  }
+
+  #left {
+    order: 1;
+  }
+}
