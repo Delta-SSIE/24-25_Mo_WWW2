@@ -34,39 +34,4 @@ body {
     padding: 10px;
     border-radius: 4px;
   }
-
-  .grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-content: center;
-    align-content: end;
-  }
-  
-  #item1 {
-    
-  }
-
-  #item3 {
-    grid-area: Area;
-  }
-  #item4 {
-    grid-area: Side;
-  }
-
-  #item5 {
-    grid-area: Main;
-  }
-
-  #item6 {
-    grid-area: Foot;
-  }
-
-  .grid2 {
-    display: grid;
-    gap:10px;
-    grid-template-areas: 
-    'Area Area Area Area'
-    'Side Main Main Main'
-    'Foot Foot Foot Foot';
-  }
   
