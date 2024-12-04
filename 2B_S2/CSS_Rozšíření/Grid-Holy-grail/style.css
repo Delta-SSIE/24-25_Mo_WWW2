@@ -1,0 +1,64 @@
+html {
+  height: 100%;
+  width: 100%;
+}
+
+.container {
+  height: 100%;
+  display: grid;
+  /*grid-template-columns: repeat(3,1fr);*/
+  grid-template-areas:
+  'n n n'
+  's a a'
+  's m p'
+  'f f f';
+}
+
+nav {
+  background-color: #253B4A;
+  /*grid-column: 1/4;*/
+  grid-area: n;
+}
+
+.ads {
+  background-color: #257D92;
+  /*grid-column: 2/4;*/
+  grid-area: a;
+}
+
+aside {
+  background-color: #FFBC00;
+  /*grid-row: 2/4;*/
+  grid-area: s;
+}
+
+main {
+  background-color: #FF530D;
+  grid-area: m;
+}
+
+.posts {
+  background-color: #FFBC00;
+  grid-area: p;
+}
+
+footer {
+  background-color: #257D92;
+  /*grid-column: 1/4;*/
+  grid-area: f;
+}
+
+/* Initial styles */
+body, html {
+  height: 100%;
+  margin: 0;
+  width: 100%;
+}
+
+nav, aside, main, footer, .posts, .ads {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 2rem 0;
+}
