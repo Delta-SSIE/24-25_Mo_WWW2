@@ -69,13 +69,18 @@
 
         //Procvičení Kruh
         function spoctiObvod(r) {
+            if(r < 0) {
+                return null;
+            }
             return 2 * r* Math.PI
         }
         console.log(spoctiObvod(10));
+        console.log(spoctiObvod(-10));
 
         //Arrow function
-        let obsahKruh = (r) => (r ** 2)*Math.PI;
+        let obsahKruh = (r) => (r > 0) ? (r ** 2)*Math.PI : null;
         console.log(obsahKruh(10));
+        console.log(obsahKruh(-10));
 
     </script>
 </body>
