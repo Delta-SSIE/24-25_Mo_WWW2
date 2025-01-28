@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_funkce</title>
+</head>
+<body>
+    <script>
+        //Definice funkce
+        function hello() {
+            console.log("Hello!");
+        }
+
+        //Volání funkci
+        hello();
+        hello();
+        hello();
+        hello();
+        hello();
+
+        //Funkce s parametrem
+        function pozdrav(jmeno) {
+            console.log(`Ahoj ${jmeno}`);
+        }
+
+        pozdrav("Božena");
+        pozdrav("Blažena");
+
+        function scitani(a,b){
+            console.log(a+b);
+        }
+
+        scitani(5); //při volání nenaplním oba parametry, tak nenaplněný paramter bere hodnotu undefined
+        scitani(1,3);
+        scitani("Ahoj",3);
+
+        
+        function nasob(a,b){
+            let nasobek = a*b
+            return nasobek;
+        }
+
+        console.log(nasob(5,5));
+        console.log(nasob(nasob(2,2),nasob(2,nasob(2,2))));
+        
+        //console.log(nasobek); //un
+
+        //Obor platnosti
+        let pro = 2;
+
+        function deleni(a,b){
+            pro = a*b
+            return pro;
+        }
+        console.log(deleni(5,20));
+        console.log(pro);
+
+        //Ex. funkce
+        const f = function(a,b) {return a+b};
+        console.log(f(5,10));
+        console.log(f(10,10));
+
+        //Arrow function
+        const af = () => "ahoj";
+        console.log(af());
+        const aff = (x,y) => x*y;
+        console.log(aff(5,3));
+
+
+    </script>
+</body>
+</html>
