@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_Funkce</title>
+</head>
+<body>
+    <script>
+        //Deklarování funkce
+        function ahoj() {
+            console.log('Ahoj!');
+        }
+        //Volání funkce
+        ahoj();
+        ahoj();
+        ahoj();
+        ahoj();
+
+        //Funkce s parametry
+        function scitani(cisloA, cisloB){
+            console.log(cisloA+cisloB);
+        }
+
+        scitani(5,5);
+        scitani(10,5);
+        scitani(10); //nedefinovaný argument = undefined
+
+        //Funkce s návratovou hodnotou
+        let nasobek = 0;
+
+        function nasob(cisloA, cisloB){
+            nasobek = cisloA*cisloB
+            return nasobek;
+        }
+
+        console.log(nasob(2,2));
+        console.log(nasob(nasob(3,3),nasob(9,3)));
+        
+        console.log(nasobek);
+
+        //Funkce jako proměnná
+
+        const f = function(a,b){return a+b;};
+        let x = f(1,2);
+        console.log(x);
+
+        //Arrow function
+        const ff = () => "ahoj";
+        console.log(ff());
+        const fa = (a,b) => a*b;
+        console.log(fa(10,15));
+    </script>
+</body>
+</html>
