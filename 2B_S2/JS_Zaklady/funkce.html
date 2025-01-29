@@ -76,6 +76,28 @@
         let f = (x) => x*x;
         console.log(f(5));
 
+        //procvičení Kruh
+        function spoctiObvod(r)
+        {
+            if(r <= 0){
+                return null
+            }
+            let obvod = 2 * Math.PI * r;
+            return obvod
+        }
+
+        console.log(spoctiObvod(5));
+        console.log(spoctiObvod(3));
+        console.log(spoctiObvod(-3));
+
+        function spoctiObsah(r) {
+            const obsah = (r) => (r<=0) ? null : r**2*Math.PI
+            return obsah(r);
+        }
+
+        console.log(spoctiObsah(5));
+        console.log(spoctiObsah(3));
+        console.log(spoctiObsah(-3));
     </script>
 </body>
 </html>
