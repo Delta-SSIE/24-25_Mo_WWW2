@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_uvod</title>
+</head>
+<body>
+    <script>
+        //Výpis do konzole
+        console.log("Hello world!");
+
+        //Deklarace proměnné
+        let x;
+        let y = 5;
+        console.log(x);
+        console.log(y);
+        x = null;
+        console.log(x);
+
+        console.log(typeof y);
+
+        //String
+        let slovo = "ahoj";
+        console.log(slovo.length);
+        console.log(slovo[0]);
+        console.log(slovo[slovo.length-1]);
+
+        console.log(`tohle je "slovo" 'super' ${slovo+y}`);
+
+        //Operátory
+        console.log(5=="5");
+        console.log(5==="5");
+
+        //slabé typování
+        x = "slovo";
+        console.log(x);
+        x += 5;
+        console.log(x);
+
+    </script>
+</body>
+</html>
