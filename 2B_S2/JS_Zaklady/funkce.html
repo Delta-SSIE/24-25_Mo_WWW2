@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_funkce</title>
+</head>
+<body>
+    <script>
+        //Deklarace funkce
+        function hello() {
+            console.log("Hello!")
+        }
+        //volání funkce
+        hello();
+        hello();
+
+        //Deklarování funkce s parametrem
+        function ahoj(jmeno, vek) {
+            console.log(`Ahoj ${jmeno}, které/mu je ${vek}`);
+        }
+
+        //Volání funkce s argumenty
+        ahoj("Petr",30);
+        ahoj("Stanislava",58);
+
+        ahoj("Bedřich"); //volání bez všech argumentů
+        ahoj();
+        //Paramtery, které nejsou naplněny mají hodnotu undefined
+
+        //Funkce s návratovou hodnotou
+        function scitani(x,y) {
+            let soucet = x+y;
+            return soucet;
+        }
+
+        console.log(scitani(1,5));
+        console.log(scitani(1));
+        console.log(scitani(scitani(2,2),scitani(3,scitani(5,6))));
+
+        //Obor platnosti
+
+        // console.log(soucet); nelze vypsat hodnotu, která existuje a je deklarování ve funkci
+
+        let nasobek;
+        function nasobeni(x,y) {
+            nasobek = x*y;
+            return nasobek;
+        }
+        console.log(nasobeni(5,5));
+        console.log(nasobek);
+
+        let counter = 0;
+        function add() {
+            counter++;
+        }        
+
+        add();
+        add();
+        add();
+
+        console.log(counter);
+
+        //Funkce jako proměnná
+        let a = function(x,y){ return x+y };
+        let b = function() {return "ahoj"};
+
+        console.log(a(5,5))
+        console.log(b());
+
+        //Arrow function
+
+        let x = () => "čus";
+        console.log(x());
+
+        let f = (x) => x*x;
+        console.log(f(5));
+
+    </script>
+</body>
+</html>
