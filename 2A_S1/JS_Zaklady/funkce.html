@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_funkce</title>
+</head>
+<body>
+    <script>
+        //deklarace funkce
+        function hello() {
+            console.log("Hello world!");
+        }
+
+        //Volání funkce
+        hello();
+        hello();
+        hello();
+        hello();
+        hello();
+
+        //Deklarace funkce s parametrem
+        function pozdrav(jmeno, vek){
+            console.log(`Ahoj ${jmeno}, gratuluji už ti je ${vek}!`);
+        }
+
+        pozdrav("Božena",15);
+        pozdrav("Evžen",55);
+
+        pozdrav(); //pokud nedám argumenty - hodnota undefined
+        pozdrav("Jan");
+
+
+        //Deklarace funkce s návratovou hodnotou
+        function secti(x,y){
+            let soucet = x+y;
+            return soucet;
+        }
+
+        console.log(secti(5,5));
+        console.log(secti(50,50));
+        console.log(secti(5));
+        console.log(secti(secti(5,10),secti(5,secti(5,10))));
+
+        //Obor platnosti
+        // console.log(soucet); soucet existuje blokově pouze ve funkci secti
+
+        let nasobek;
+        function nasobeni(x,y){
+            nasobek = x*y;
+            return nasobek;
+        }
+        nasobeni(5,10);
+        console.log(nasobek);
+
+        //Proměnná jako funkce
+        const f = function() {return "Ahoj"};
+        console.log(f());
+        let s = function(x,y) {return x+y};
+        console.log(s(5,5));
+
+        //Arrow function
+        const del = (a,b) => a/b;
+        console.log(del(10,5));
+        let jmeno = () => "Jan";
+        console.log(jmeno());
+
+    </script>
+</body>
+</html>
