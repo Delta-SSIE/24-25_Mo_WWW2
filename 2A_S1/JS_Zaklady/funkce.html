@@ -65,6 +65,23 @@
         let jmeno = () => "Jan";
         console.log(jmeno());
 
+
+        //Procvičení Kruh
+        function spoctiObvod(r) {
+            if(r <= 0){
+                return null;
+            }
+            return 2*r*Math.PI
+        }
+        console.log(spoctiObvod(25));
+        console.log(spoctiObvod(5));
+        console.log(spoctiObvod(-5));
+
+        const obsah = (r) => (r<=0) ? null : r**2*Math.PI
+        console.log(obsah(5));
+        console.log(obsah(15));
+        console.log(obsah(-55));
+
     </script>
 </body>
 </html>
