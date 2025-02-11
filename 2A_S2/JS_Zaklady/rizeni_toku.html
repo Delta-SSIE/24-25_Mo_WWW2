@@ -56,6 +56,17 @@
         for (let i = 0; i < 10; i++) {
            console.log(i);
         }
+
+        //Procvičení sudalicha
+
+        function sudaLicha(max) {
+            let text = "";
+            for (let i = 1; i <= max; i++) {
+                text += `Čislo ${i} je ${(i%2==0) ? "sudé" : "liché"}. \n`
+            }
+            return text;
+        }
+        console.log(sudaLicha(50));
     </script>
 </body>
 </html>
