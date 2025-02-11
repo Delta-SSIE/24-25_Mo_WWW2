@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_Pole_Kolekce</title>
+</head>
+<body>
+    <script>
+        //Deklarace pole
+
+        let pole = ["a","b","c","d"];
+        console.log(pole);
+        console.log(pole.toString()); //výpis pole do konzole
+
+        pole[0] = "x";
+        pole[4] = "e";
+        console.log(pole);
+
+        pole.push("f");
+        console.log(pole);
+
+        //iterace pole
+        for (let i = 0; i < pole.length; i++) {
+            console.log(pole[i]);
+        }
+
+        for(let pismeno of pole){
+            console.log(pismeno);
+        }
+
+        //foreach
+        function vypis (value, index){
+            console.log(`Prvek na indexu ${index} má hodnotu ${value}`);
+        } 
+
+        pole.forEach(vypis);
+
+        //push a pop
+        pole.push("g","h");
+        console.log(pole);
+        pole.pop();
+        pole.pop();
+        console.log(pole);
+
+        //shift a unshift
+        pole.shift();
+        console.log(pole);
+        pole.unshift("a");
+        console.log(pole);
+
+        //řetězec na pole
+        let txt = "a,b,c,d";
+        let nPole = txt.split(",");
+        console.log(nPole);
+        console.log(nPole.join('-'));
+
+        //filtrování  a mapování pole
+        let cisla = [1,5,10,20,50];
+        let cislaDve = cisla.filter((value) => value > 9); //filter
+        let cislaTri = cisla.map((value) => value*3)
+        console.log(cisla);
+        console.log(cislaDve);
+        console.log(cislaTri);
+
+
+        
+    </script>
+</body>
+</html>
