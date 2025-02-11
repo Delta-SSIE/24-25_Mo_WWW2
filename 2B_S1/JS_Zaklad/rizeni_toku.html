@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_RT</title>
+</head>
+<body>
+    <script>
+        //podmínka if
+        if(5>0){
+            console.log("y");
+        }
+
+        //striktní rovnost
+        console.log(5=='5');
+        console.log(5==="5");
+
+        //Falsey - 0, null, undefined, ""
+        if(0) {
+
+        } else {
+            console.log('nope');
+        }
+
+        //switch - striktní rovnost
+
+        switch(5)
+        {
+            case '5':
+                console.log('txt');
+                break;
+            case 5:
+                console.log('čislo');
+                break;
+            default:
+                console.log("");
+                break;    
+        }
+
+        //ternární operator
+        // (podminka) ? True : False
+        console.log((5<0) ? "Blbost" : "Yes");
+
+        //While
+        let x = 0;
+        while(x < 5) {
+            console.log(x);
+            x++;
+        }
+
+        x = 0;
+        do {
+            console.log(x);
+            x++;
+        }while(x < 5);
+
+        //For cyklus
+        for (let i = 0; i < 10; i++) {
+            console.log(i);
+            
+        }
+        
+    </script>
+</body>
+</html>
