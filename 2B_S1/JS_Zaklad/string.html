@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_string</title>
+</head>
+<body>
+    <script>
+        //Procvičení Verbing
+        // sem napište funkci verbing
+        const verbing = (word) => (word.length > 3) ? (word.slice(-3) == 'ing') ? word += 'ly' : word += 'ing' : word;
+
+        // a zde si ji vyzkoušíte
+        console.log(verbing('bath'));// 'bathing'
+        console.log(verbing('swimming')); // 'swimmingly'
+        console.log(verbing('go')); //'go'
+
+        //Procvičení maskovač
+
+        // vložte deklaraci funkce s jedním parametrem
+        function maskovac(word) {
+            let pismeno = word[0];
+            word = word.replaceAll(pismeno,'*');
+            word = word.substr(1);
+            word = pismeno + word;
+            return word;
+        }
+
+        // vykoušejte si ji
+        console.log(maskovac("papír")); //vypíše pa*ír
+        console.log(maskovac("kokodák")); //vypíše ko*odá*
+        console.log(maskovac("krakonoš")); //vypíše kra*onoš
+        console.log(maskovac("babiččin obarvený ubrus")); //vypíše ba*iččin o*arvený u*rus
+
+
+    </script>
+</body>
+</html>
