@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_Pole</title>
+</head>
+<body>
+    <script>
+        const kPole = ["a","b","c"];
+        let pole = ["a","b","c"];
+        console.log(pole);
+        console.log(pole.toString());
+
+        pole[0] = 'x';
+        kPole[0] = 'x';
+        console.log(pole);
+        console.log(kPole);
+        pole[3] = 'd';
+        kPole[3] = 'd';
+        console.log(pole);
+        console.log(kPole)
+        
+        pole.push('e','f');
+        console.log(pole);
+
+        //Iterace
+        for (let i = 0; i < pole.length; i++) {
+            console.log(pole[i]);
+            
+        }
+
+        for(let pismeno of pole){
+            console.log(pismeno);
+        }
+
+        //Array forEach
+        let txt = "";
+        function hlaskovani(value, index){
+            txt += `${index}. ${value}; `
+        }
+        pole.forEach(hlaskovani)
+        console.log(txt);
+        txt = ""
+        pole.forEach((value,index) => txt += `${index}. ${value}; `);
+        console.log(txt);
+
+        //manipulace s polem
+        pole.push('g'); 
+        pole.push('h');
+        console.log(pole);
+        pole.pop();
+        pole.pop();
+        console.log(pole);
+        pole.shift();
+        console.log(pole);
+        pole.unshift('a');
+        console.log(pole);
+
+        //Průchod polem s metodou
+
+        pole = [1,2,3,4];
+        let mPole = pole.map((value) => value*2);
+        console.log(mPole);
+        let fPole = pole.filter((value) => value>2);
+        console.log(fPole);
+    </script>
+</body>
+</html>
