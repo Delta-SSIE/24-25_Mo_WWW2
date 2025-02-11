@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_RizeniToku</title>
+</head>
+<body>
+    <script>
+        //IF
+        if(5>0){
+            console.log("A");
+        }
+
+        //Striktní a nestriktní rovnost
+        console.log(5=='5');
+        console.log(5==='5');
+
+        //Falsey - 0,"",null,undefined
+        if(0){
+
+        } else {
+            console.log("B");
+        }
+
+        //Switch (bacha, striktiní rovnost)
+        switch(5)
+        {
+            case '5':
+                console.log("Tohle je text 5");
+                break;
+            case 5:
+                console.log("Tohle je čislo 5");
+                break;
+            default:
+                console.log("D");
+                break;        
+        }
+
+        //shorthand if
+        console.log((5>0) ? "Ahoj":"Ne Ahoj");
+
+        //While
+        let x = 0
+        while(x<5){
+            console.log(x);
+            x++;
+        }
+        x = 0
+        do {
+            console.log(x);
+            x++;
+        }while(x<5);
+
+        //for
+        for (let i = 0; i < 10; i++) {
+           console.log(i);
+        }
+    </script>
+</body>
+</html>
