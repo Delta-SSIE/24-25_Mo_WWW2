@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_RT</title>
+</head>
+<body>
+    <script>
+        //if podminka
+
+        if(5>0){
+            console.log("5 je více než 0!")
+        } else {
+
+        }
+
+        //striktní rovnost
+        console.log(5=='5');
+        console.log(5==='5');
+
+        //Falsey - 0, "", undefined, null => false
+        if(0){
+
+        } else {
+            console.log("Nula je false");
+        }
+
+        //Switch
+        switch(5){
+            case '5':
+                console.log('txt');
+                break;
+            case 5:
+                console.log('number');
+                break;    
+            default:
+                break;
+        }
+
+        //Ternární operátor
+        console.log(`Ahoj ${(5 > 0) ? 'Honzo' : 'Janku'}`);
+        // (podminka) ? true : false
+
+        let x = 0;
+        while(x < 5) {
+            console.log(x);
+            x++;
+        }
+
+        //For cyklus
+        for (let i = 0; i < 10; i++) {
+            x++;     
+        }
+        console.log(x);
+    </script>
+</body>
+</html>
