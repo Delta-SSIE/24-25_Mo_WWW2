@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_array</title>
+</head>
+<body>
+    <script>
+        const pole = ['a','b','c'];
+        console.log(pole);
+
+        //změna hodnoty v poli a přidání hodnoty
+        pole[0] = 'x'; //přepis hodnoty na existujícím indexu
+        //nové hodnoty na nových indexech
+        pole[3] = 'd';
+        pole[5] = 'f';
+        pole.push('g');
+        console.log(pole);
+        //Iterace pole pomocí for
+        for (let i = 0; i < pole.length; i++) {
+            console.log(pole[i]);
+        }
+
+        //Iterace pomocí for of
+        let txt = "";
+        for(let pismeno of pole){
+            txt += pismeno + " ";
+        }
+        console.log(txt);
+
+        //foreach
+        function vypis(value, index)
+        {
+            console.log(`Na indexu: ${index} je hodnota: ${value}`);
+        }
+        
+        pole.forEach(vypis)
+
+        txt = ""
+        pole.forEach((v,i) => txt += i +":" + v + " ");
+        console.log(txt);
+
+        //push a pop
+        pole.push('h','i','j'); //vloží na tři nové indexy zadané hodnoty
+        console.log(pole);
+        pole.pop(); //vyhodí j
+        pole.pop(); //vyhodí i
+        pole.pop(); //vyhodí h
+        console.log(pole);
+
+        //shift a unshift
+        pole.shift(); //vyhodí to 0. index (x);
+        console.log(pole);
+        pole.unshift('a'); //přidá prvek 'a' na 0. index a pole posune
+        console.log(pole);
+
+        //převod string na pole a obráceně
+        let text = 'ahoj/karle'
+        let Npole = text.split('/');
+        console.log(Npole);
+        text = Npole.join(','); //lze použít ještě toString();
+        console.log(text);
+
+        console.log(typeof pole);
+        console.log(Array.isArray(pole));
+
+        //.map()
+        let cisla = [1,2,3,4,5];
+        console.log(cisla);
+        let mapPole = cisla.map((value) => value*2);
+        console.log(mapPole);
+
+        //.filter()
+        let filtrPole = cisla.filter((value) => value > 2);
+        console.log(filtrPole);
+
+    
+        
+    </script>
+</body>
+</html>
