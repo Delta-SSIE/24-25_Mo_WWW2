@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_pole</title>
+</head>
+<body>
+    <script>
+        let abc = ['a','b','c'];
+        console.log(abc);
+
+        const abcd = ['a','b','c'];
+        abc[0] = 'x'; //mění prvek na zadaném indexu
+        abc[3] = "d"; //přídá nový index s novou hodnotou
+        abcd[0] = 'x'; 
+        abcd[3] = "d"; 
+
+        // abcd = ['a','b','c']; const nelze znovu naplnit hodnotami, lze jenom upravovat
+        console.log(abc);
+        console.log(abcd);
+
+        abc[6] = 'g';
+        console.log(abc);
+
+        //interace pole pomocí for
+        for (let i = 0; i < abc.length; i++) {
+            console.log(abc[i]);
+        }
+
+        //interace pomocí of
+        let txt = "";
+        for(let pismeno of abc){
+            txt += pismeno + ", "
+        }
+        console.log(txt);
+
+        //iterace pole pomocí foreach
+        function vypis(value, index){
+            console.log(`na indexu ${index} je hodnota ${value}`);
+        }
+
+        abc.forEach(vypis);
+        txt = "";
+        abc.forEach((v,i) => txt += i + ":" + v + " ");
+        console.log(txt);
+
+        //push a pop
+        abc.push('h','i'); //přidá na nové dva indexy
+        console.log(abc);
+        abc.pop(); // ubere i
+        abc.pop(); //ubere h 
+        abc.pop(); //ubere g
+        abc.pop(); // ubere un
+        abc.pop(); //ubere un
+        console.log(abc);
+
+        //shift a unshift
+        abc.shift() //odebere 'x' ze začátku pole
+        abc.unshift('a') //vloží prvek na začátek pole a zbytek prvků posune
+        console.log(abc);
+
+        //převedení string na pole
+        let text = "ahoj/trido/ahoj/skolo"
+        let Tpole = text.split('/');
+        console.log(Tpole);
+
+        //převedení pole na string
+        console.log(abc.join('/'));
+        console.log(abc.toString());
+
+        console.log(typeof abc);
+        console.log(Array.isArray(abc));
+
+        //map()
+        let cisla = [1,2,3,4,5];
+        let mCisla = cisla.map((value) => value*2);
+        console.log(cisla);
+        console.log(mCisla);
+
+        //filter()
+        let fCisla = cisla.filter((value) => value>2);
+        console.log(fCisla);
+
+    </script>
+</body>
+</html>
