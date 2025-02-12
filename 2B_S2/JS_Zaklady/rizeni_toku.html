@@ -53,6 +53,24 @@
             x++;     
         }
         console.log(x);
+
+
+        //Procvičení SudáLichá
+        // sem přijde tělo vaší funkce
+        function sudaLicha(max) 
+        {
+            let txt = "";
+            for(let i = 1; i <= max;i++)
+            {
+                txt += `Čislo ${i} je ${(i%2 == 0) ? 'sudé' : 'liché'}.\n`
+            }
+            return txt;
+        }
+
+        // a vyzkoušíme
+        console.log(sudaLicha(10));
+        console.log(sudaLicha(-100));
+
     </script>
 </body>
 </html>
