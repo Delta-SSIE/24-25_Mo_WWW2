@@ -73,6 +73,23 @@
         for (let index = 0; index < pole.length; index++) {
             console.log(pole[index]);
         }
+
+        //procvičení suda a lichá
+        // sem přijde tělo vaší funkce
+        function sudaLicha(max) 
+        {
+            let txt = "";
+            for(let i = 0; i < max; i++)
+            {
+                txt += `Čislo ${i} je ${(i%2==0) ? 'sudé' : 'liché'}.\n`;
+            }
+            return txt
+        }
+
+        // a vyzkoušíme
+        console.log(sudaLicha(5));
+        console.log(sudaLicha(-100));
+
     </script>
 </body>
 </html>

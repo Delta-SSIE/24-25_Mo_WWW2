@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_String</title>
+</head>
+<body>
+    <script>
+        //procvičení Verbing
+        // sem napište funkci verbing
+        const verbing = (word) => (word.length > 3) ? (word.slice(-3) == 'ing') ? word += 'ly' : word += 'ing' : word
+
+        // a zde si ji vyzkoušíte
+        console.log(verbing('bath'));// 'bathing'
+        console.log(verbing('swimming')); // 'swimmingly'
+        console.log(verbing('go')); //'go'
+
+        //Procvičení Míchačka L2
+        // sem přijde deklarace funkce
+        function michacka(w1,w2)
+        {
+            if(w1.length < 2 || w2.length < 2){
+                return "Nelze míchat, není co.";
+            }
+            return `${w2.slice(0,2)}${w1.slice(2)} ${w1.slice(0,2)}${w2.slice(2)}`;
+        }
+
+        // a teď ji vyzkoušíme)
+
+        console.log(michacka("chlap", "brouk")); //  vrátí "brlap chouk".
+        console.log(michacka("lampa", "lůj"));   //vrátí "lůmpa laj".
+        console.log(michacka("x", "popokatepetl")); //vrátí "Nelze míchat, není co.".
+        console.log(michacka("marinada", "0"));  //vrátí "Nelze míchat, není co.".              
+    </script>
+</body>
+</html>
