@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_String</title>
+</head>
+<body>
+    <script>
+        //Procvičení verbing
+
+        // sem napište funkci verbing
+        const verbing = (word) => (word.length > 3) ? (word.slice(-3) == 'ing') ?  word += 'ly' : word += 'ing': word
+
+        // a zde si ji vyzkoušíte
+        console.log(verbing('bath'));// 'bathing'
+        console.log(verbing('swimming')); // 'swimmingly'
+        console.log(verbing('go')); //'go'
+
+    </script>
+</body>
+</html>
