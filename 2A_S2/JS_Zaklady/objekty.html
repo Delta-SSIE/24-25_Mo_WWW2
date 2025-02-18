@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_OOP</title>
+</head>
+<body>
+    <script>
+        //tvorba objektu
+
+        let auto = {};
+        //přidání atributu objektu
+        auto.znacka = "Toyota";
+
+        console.log(auto);
+
+        let clovek = {
+            jmeno: "Jan",
+            vek: 15,
+            oblibeneJidlo: "špagety"
+        };
+
+        console.log(clovek);
+
+        let jmeno = clovek.jmeno;
+        clovek.jmeno = "Jindrich";
+        console.log(jmeno); 
+        console.log(clovek);
+
+        clovek['oblibeneJidlo'] = "guláš";
+        console.log(clovek);
+
+        let lide = {}
+        lide['Jindra'] = clovek;
+        console.log(lide);
+
+        clovek.vek = 25;
+        console.log(lide);
+
+        console.log(lide.Jindra.vek); //tečková syntaxe
+
+        console.log(lide['Jindra']['vek']); //zavorková syntaxe
+
+        //objekt s atributy pole a objektu
+
+        let osoba = {
+            jmeno: "Jakub",
+            vek: 35,
+            batoh: ["nuž","tužka","sešit"],
+            narozeniny: {den: 27, mesic: "řijen", rok: 1992}
+        };
+
+        console.log(osoba.batoh[1]);
+        console.log(osoba.narozeniny.mesic);
+
+
+    </script>
+</body>
+</html>
