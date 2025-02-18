@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_Sets_Maps</title>
+</head>
+<body>
+    <script>
+        let set = new Set(["a","b","c"]);
+        console.log(set);
+        set.add("b"); //tento prvek se nepřidá, protože už v Setu je
+        set.add("c"); //tento prvek se nepřidá, protože už v Setu je
+        set.add("d");
+        console.log(set);
+
+        for(let x of set){
+            console.log(x);
+        }
+
+        console.log(set.has("a"));
+        console.log(set.has("e"));
+
+        for(let x of set.entries()){
+            console.log(x);
+        }
+
+        //Maps
+        let mapa = new Map([
+            ["a",10],
+            ["b",15],
+            ["c",30],
+        ]
+        )
+        console.log(mapa);
+        mapa.set("d",25);
+        console.log(mapa);
+
+        //hodnota z mapy pomocí klíče
+        console.log(mapa.get("c"));
+        console.log(mapa.get("a"));
+
+        //smazání hodnoty v mapě
+        mapa.delete("c");
+        console.log(mapa);
+
+        //interace
+        for(let hodnota of mapa.values())
+        {
+            console.log(hodnota); 
+        }
+
+        for(let klic of mapa.keys())
+        {
+            console.log(klic); 
+        }
+
+        for(let zaznam of mapa.entries())
+        {
+            console.log(zaznam); 
+        }
+    </script>
+</body>
+</html>
