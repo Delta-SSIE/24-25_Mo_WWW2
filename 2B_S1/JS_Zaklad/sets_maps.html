@@ -76,6 +76,29 @@
             console.log(zaznam[0] + " " + zaznam[1]);
         }
 
+            let spellBook = new Map([
+        ["Ignis Flamma", "Vyvolá ohnivý plamen"],
+        ["Ventus Impetus", "Vyvolá silný vítr"],
+        ["Terra Firma", "Zpevní půdu pod nohama"],
+        ["Aether Lucis", "Vyvolá zářivé světlo"],
+        ["Umbra Tenebris", "Vytvoří neproniknutelnou temnotu"]
+        ]);
+
+    // TODO: Přidej nové kouzlo "Aqua Purifica"
+        spellBook.set("Aqua Purifica","Očistí vodu");
+    // TODO: Napiš funkci `getSpellEffect(spellName)`, která vypíše účinek kouzla
+        const getSpellEffect = (spellName) => (spellBook.has(spellName)) ? spellBook.get(spellName) : "Neznámé zaklínadlo!"
+
+        console.log(getSpellEffect("Ventus Impetus"))
+        console.log(getSpellEffect("Vdsadsda"))
+    // TODO: Odstraň kouzlo "Umbra Tenebris"
+        spellBook.delete("Umbra Tenebris");
+
+    // TODO: Vypiš všechna zaklínadla v lexikonu    
+        for(let zaklinadlo of spellBook.keys())
+        {
+            console.log(zaklinadlo);
+        }
     </script>
 </body>
 </html>
