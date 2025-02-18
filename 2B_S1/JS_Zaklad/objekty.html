@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_objekty</title>
+</head>
+<body>
+    <script>
+        let auto = {}; //deklarace objektu auto
+         
+        auto.znacka = "BMW"; //přidání vlastnosti objektu auto znacka s hodnotou "BMW"
+        console.log(auto); 
+
+        //inicializace objektu s vlastnostmi
+        let student = {
+            jmeno: 'Jakub',
+            vek: 15,
+            prumer: 3.5
+        };
+
+        console.log(student);
+        console.log(student.jmeno); //tečková syntaxe na vypsání hodnoty vlastnosti
+
+        let jmenoStudenta = student.jmeno; //jmenoStudenta dostane a uloží si hodnotu vlastnosti v tu danou chvíli
+        student.jmeno = 'Richard';
+
+        console.log(student.jmeno); //Richard
+        console.log(jmenoStudenta); //Jakub
+
+        console.log(student['jmeno']); //závorková syntaxe
+        let nazevVlastnosti = 'prumer';
+        // console.log(student.nazevVlastnosti); nelze
+        console.log(student[nazevVlastnosti]); //vypíše vlastnost, dle hodnoty v proměrenné
+
+        let student2 = {
+            jmeno: 'Nikola',
+            vek: 35,
+            prumer: 1.0
+        };
+
+        let skola = {
+            //obejkt obsahuje reference na původní objekty, které vkládá jako prvky do pole
+            studenti: [student, student2]
+        };
+
+        console.log(skola);
+
+        student.prumer = 2.0;
+        console.log(skola);
+
+        console.log(skola.studenti[1].jmeno);
+        console.log(skola['studenti'][1]['jmeno']);
+        
+        //Když přepisuji vlastnost u objektu v rámci objektu, kde je reference na daný objekt, tak se přepíše vlastnost u objektu samotného
+        skola.studenti[1].jmeno = "Františka";
+        console.log(student2);
+
+        //smazání vlastnosti s hodnotou
+        delete student.jmeno;
+        console.log(student);
+
+        function PredstavSe(clovek){
+            console.log(`Ahoj, já jsem ${clovek.jmeno} a je mi ${clovek.vek}`)
+        };
+
+        PredstavSe(student);
+        PredstavSe(student2);
+        PredstavSe(skola.studenti[0]);
+        PredstavSe(skola.studenti[1]);
+
+        //For cyklus s IN (procházení vlastností, dle jejich názvů)
+        for(let key in student2){
+            console.log(key);
+        }
+        
+        let objektB = {
+            nazev: "B"
+        }
+        let objektA = {
+            nazev: "A",
+            druhyObjekt: objektB
+        }
+        objektB. druhyObjekt =  objektA;
+        
+        console.log(objektA);
+    </script>
+</body>
+</html>
