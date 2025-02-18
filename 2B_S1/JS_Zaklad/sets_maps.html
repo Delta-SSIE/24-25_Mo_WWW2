@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_Sets_Maps</title>
+</head>
+<body>
+    <script>
+        const set = new Set(["a","b","c"]);
+        console.log(set);
+
+        const barvy = new Set();
+        barvy.add("žlutá");
+        barvy.add("černá");
+        barvy.add("žlutá"); //neuloží se, protože už v setu je
+        console.log(barvy);
+
+        for (barva of barvy){
+            console.log(barva);
+        }
+
+        console.log(barvy.has("modrá"));
+        console.log(barvy.has("černá"));
+
+        for(barva of barvy.entries())
+        {
+            console.log(barva);
+        }
+
+        //Deklarace a incializace Mapy
+
+        let mapa = new Map([
+            [1,"a"],
+            [2,"b"],
+            [4,"d"]
+        ])
+
+        let dluhy = new Map();
+
+        dluhy.set("Jonas",200);
+        dluhy.set("Richard",1000);
+        dluhy.set("Nikola",100);
+        console.log(mapa);
+        console.log(dluhy);
+
+        console.log(dluhy.get("Nikola")); //get vrací hodnotu na daném klíči
+        console.log(dluhy.size); //size vrací počet záznamů
+
+        //smazání prvku z mapy
+        dluhy.delete("Jonas");
+        console.log(dluhy);
+
+        console.log(dluhy.has("Richard")); //zdali obsahuje mapa daný klíč
+
+        //Iterace mapy
+
+        //Průchod po hodnotách
+        let kolikDostanu = 0;
+        for(let prachy of dluhy.values())
+        {
+            kolikDostanu += prachy
+        }
+        console.log(kolikDostanu);
+
+        //průchod po klíčích
+        for(let dluznik of dluhy.keys())
+        {
+            console.log(dluznik);
+        }
+
+        //průchod přes záznam
+        for(let zaznam of dluhy.entries())
+        {
+            //zaznam je pole, kde je na 0 indexu klíč a na 1 indexu hodnota
+            console.log(zaznam[0] + " " + zaznam[1]);
+        }
+
+    </script>
+</body>
+</html>
