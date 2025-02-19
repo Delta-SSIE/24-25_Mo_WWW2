@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_OOP</title>
+</head>
+<body>
+    <script>
+        //Deklarace objektu
+        const auto = {}; //objekt
+
+        auto.znacka = "BMW";
+        console.log(auto);
+
+        const student = {
+            jmeno: "Přemysl",
+            vek: 18,
+            barvaOci: "modra",
+            rocnik: 1
+        };
+
+        const student2 = {
+            jmeno: "Jarmila",
+            vek: 24,
+            barvaOci: "zelene",
+            rocnik: 3
+        };
+
+        console.log(student);
+
+        //tečková syntaxe objekt.vlastnost
+        console.log(student.jmeno); 
+
+        //závorková synatxe objekt['vlastnost']
+        console.log(student['jmeno']);
+        let vlastnost = 'rocnik';
+        console.log(student[vlastnost]);
+        //tohle nejde student.vlastnost
+
+        const skola = {
+            jmeno: "Delta",
+            pocetStudentu: 150,
+            studenti: [student, student2],
+            jidelna: {jmeno: 'Zlatá štika', poceStolu: 50, pocetMenu: 3}
+        };
+
+        //jmeno první studenta
+        console.log(skola.studenti[0].jmeno);
+        //počet stolů v jídelně
+        console.log(skola.jidelna.poceStolu);
+        
+        //změna u objektu
+        student.jmeno = "Václav";
+        console.log(skola.studenti[0].jmeno); //Václav
+        //objekt škola má ve vlastnosti studenti pouze reference na objekty student a student2, tzn. při úpravě daného objektu se objeví změna i v rámci odkazu přes referenci.
+
+        //změna u objektu
+        let jmenoStudenta = student.jmeno; //jmenoStudenta získá hodnotu dané vlastnosti objektu
+        student.jmeno = "Otakar";
+        console.log(skola.studenti[0].jmeno); //Otakar
+        console.log(jmenoStudenta); //Václav
+
+        //smazání vlastnosti
+        delete student.jmeno;
+        console.log(skola.studenti[0]);
+
+        //funkce s objektem jako argumentem
+        function PredstavSe(osoba){
+            console.log(`Ahoj, já jsem ${osoba.jmeno} a je mi ${osoba.vek}, chodím do ${osoba.rocnik}. ročníku!`);
+        }
+
+        PredstavSe(student);
+        PredstavSe(student2);
+
+        //For cyklus průchod vlastností objektu
+
+        for(let vlastnost in student2){
+            console.log(vlastnost);
+        }
+
+        //Vnořené objekty
+
+        //objekt zaměstnance
+        const zam1 = {
+            jmeno: "Kamil",
+            vek: 20
+        }
+
+        //objekt kanceláře
+        const kancelar = {
+            vedouci: zam1, //refrence na objekt zaměstnance
+            pracovnici: [
+                {jmeno: "Uršula", vek: 50},
+                {jmeno: "Gustav", vek: 30},
+                {jmeno: "Dominik", vek: 12}
+            ],
+
+        }
+
+        //přidání vlastnosti zaměstnanci, reference na objekt kancelár
+        //nelze odkazovat na objekt, který ještě neexistuje
+        zam1.oddeleni = kancelar;
+
+        console.log(kancelar);
+
+
+
+    </script>
+</body>
+</html>
