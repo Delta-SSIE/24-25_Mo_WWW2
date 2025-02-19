@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_sets_maps</title>
+</head>
+<body>
+    <script>
+        //incializace setu
+        let set = new Set(['a','b','c']);
+
+        //deklarace setu
+        let karty = new Set();
+
+        //přidání hodnoty do setu
+        karty.add("srdcová sedma");
+        karty.add("pikové eso");
+        karty.add("piková sedma");
+        karty.add("pikové eso"); //nepřidá se, protože už v setu je
+
+        console.log(set);
+        console.log(karty);
+
+        //has vrací t/f dle toho jestli hodnota je v setu
+        console.log(karty.has('pikové eso'));
+        console.log(karty.has('srdcový král'));
+
+        //iterace setu
+        for(karta of karty){
+            console.log(karta);
+        }
+
+        for(karta of karty.entries())
+        {
+            console.log(karta);
+        }
+
+        //Maps
+        //Incializace mapy s hodnotami
+        const dluhopis = new Map([
+            ["Richard",500],
+            ["Iva",1500]
+        ]);
+
+        //přidání hodnoty do mapy
+        dluhopis.set("Jindra",50);
+        console.log(dluhopis);
+
+        console.log(dluhopis.get("Richard")) //vrací hodnotu na daném klíči
+        
+        //smazaní záznamu
+        dluhopis.delete("Iva");
+        console.log(dluhopis);
+        console.log(dluhopis.has("Richard"));
+
+        //Iterace mapou
+        for(klic of dluhopis.keys()){
+            console.log(klic);
+        }
+
+        for(hodnota of dluhopis.values()){
+            console.log(hodnota);
+        }
+
+        for(zaznam of dluhopis.entries()){
+            console.log(zaznam);
+            console.log(`Dluh je roven ${zaznam[1]} a dluží mi ${zaznam[0]}`)
+        }
+ 
+
+    </script>
+    
+</body>
+</html>
