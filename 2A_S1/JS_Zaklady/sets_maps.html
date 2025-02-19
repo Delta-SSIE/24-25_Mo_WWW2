@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_Maps_Set</title>
+</head>
+<body>
+    <script>
+        //definice
+
+        let set = new Set(["a","b","c"]);
+
+        let karty = new Set();
+        karty.add("piková královna");
+        karty.add("kárový král");
+        karty.add("srdcová devítka");
+        karty.add("piková královna"); //nepřidá se, protože už v setu stejná hodnota je
+
+        console.log(karty);
+
+        //metody se Setem
+        console.log(karty.has("srdcová devítka")); //ověření, že prvek je v setu
+
+        for(karta of karty)
+            {
+                console.log(karta);
+            }
+        
+            for(hodnota of karty.values())
+            {
+                console.log(hodnota);
+            }
+
+            for(klic of karty.keys())
+            {
+                console.log(klic);
+            }
+
+            for(zaznam of karty.entries())
+            {
+                console.log(zaznam);
+            }
+
+            //MAPS
+
+            const dluhopis = new Map([
+                ["Iva",100],
+                ["Karel",50]
+            ])
+
+            //přidání prvku do mapy
+            dluhopis.set("Ivo",1100);
+            dluhopis.set("Bedřich",100);
+
+            console.log(dluhopis);
+
+            //Hodnota dle klíče
+            console.log(dluhopis.get("Iva"));
+            console.log(dluhopis.get("Karel"));
+
+            //Smazaaní hodnoty
+            dluhopis.delete("Karel");
+            console.log(dluhopis);
+
+            //Výpis z Maps (procházení mapou)
+
+            for(dluznik of dluhopis.keys())
+            {
+                console.log(dluznik)
+            }
+
+            for(dluh of dluhopis.values())
+            {
+                console.log(dluh)
+            }
+
+            for(zaznam of dluhopis.entries())
+            {
+                console.log(zaznam)
+                console.log(`Dlužná částka je ${zaznam[1]} a dluží mi jí ${zaznam[0]}`);
+            }
+
+
+
+    </script>
+</body>
+</html>
