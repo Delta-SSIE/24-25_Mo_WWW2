@@ -82,6 +82,30 @@
             }
 
 
+            //procvičení inventář
+
+            let itemDatabase = new Map([
+            ["item_001", { name: "Kožená zbroj", rarity: "běžný" }],
+            ["item_002", { name: "Rezavá dýka", rarity: "běžný" }],
+            ["item_003", { name: "Stříbrný štít", rarity: "vzácný" }],
+            ["item_004", { name: "Prsten nekonečné many", rarity: "legendární" }]
+        ]);
+
+        function VypisPredmet(rarita){
+            for(let predmet of itemDatabase.values()){
+                if(predmet.rarity == rarita)
+                {
+                    console.log(predmet.name)
+                }
+            }
+        }
+
+        VypisPredmet("běžný");
+
+        VypisPredmet("vzácný");
+
+        VypisPredmet("legendární");
+
 
     </script>
 </body>
