@@ -7,7 +7,111 @@
 </head>
 <body>
     <script>
+
+        //Deklarace a incializace objektu
+
+        const auto = {};
+        console.log(typeof auto);
+
+        auto.znacka = "BMW";
+
+        console.log(auto);
+        auto.znacka = "Toyota";
+        console.log(auto);
+        auto.kola = 4;
+        console.log(auto);
+
+        const student = {
+            jmeno: "Jakub",
+            vek: 18,
+            rocnik: 4,
+            barvaOci: "modrá"
+        }
+        console.log(student);
+
+        //tečková synatce
+        console.log(student.barvaOci);
+
+        //závorková syntaxe
+        console.log(student['barvaOci']);
+        let vlastnost = 'vek';
+        console.log(student[vlastnost]);
+        //console.log(student.vlastnost); Tohle nelze
+
+        const student2 = {
+            jmeno: "Nikola",
+            vek: 16,
+            rocnik: 2,
+            barvaOci: "zelená"
+        }
+
+
+        const skola = {
+            nazev: "Delta",
+            pocetStudent: 100,
+            studenti: [student, student2], //zde se neukládá hodnota objektu, ale pouze reference na dané objekty
+            jidelna: {nazev: "Zlatá štika", pocetStolu: 50, pocetMenu: 3}
+        }
+
+        console.log(skola.studenti[0].jmeno);
+        console.log(skola.jidelna.pocetStolu);
+
+        student2.rocnik = 3;
+        console.log(skola.studenti[1].rocnik);
+
+        let rocnikStudenta = student2.rocnik; //v rocnikStudenta se uloží hodnota dané vlastnosti v danou chvíli
+        student2.rocnik = 2;
+        console.log(skola.studenti[1].rocnik);
+        console.log(rocnikStudenta);
+
+        skola.studenti[0].barvaOci = "hnědá"; //přes ref lze upravit objekt
+        console.log(student.barvaOci);
+
+        //Smazání vlastnosti
+        delete student.barvaOci;
+        console.log(student);
         
+        //Objekt jako argument funkce
+        function PredstavSe(osoba){
+            console.log(`Ahoj, já jsem ${osoba.jmeno} a chodím do ${osoba.rocnik}. ročníku!`)
+        }
+
+        PredstavSe(student);
+        PredstavSe(student2);
+
+        //iterace IN
+        for(let vlastnost in student) {
+            console.log(vlastnost);
+        }
+
+        //Vnořené objekty
+        const osoba = {
+            jmeno: "Karel",
+            vek: 10,
+            pracoviste: null //nemužu vložit odkaz na objekt, který ještě neexistuje
+        };
+
+        const kancelar = {
+            vedouci: osoba,
+            nazev: "SuperKancl",
+            zamestnanci: [
+                {jmeno: "Jaromír", vek: 50},
+                {jmeno: "Jindřich", vek: 40},
+                {jmeno: "Jarmila", vek: 12}
+            ]
+        };
+
+        osoba.pracoviste = kancelar; //tady už kancelář existuje, takže můžu na ní dát odkaz
+        console.log(osoba);
+
+
+        //Ref vs. hodnota
+
+        let pole1 = ["modra","červená","černá"];
+        let pole2 = pole1; //nepřepisují se hodnoty, pouze se vytváří reference na pole1
+        pole1[0] = "purpurová";
+        console.log(pole2);
+
     </script>
 </body>
 </html>
