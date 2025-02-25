@@ -249,6 +249,69 @@
         console.log(predchoziObdobi(leto).nazev); // jaro
         console.log(predchoziObdobi(rocniObdobi[3]).nazev); // podzim
 
+
+        //Procvičení Kyblík
+        //sem přijde deklarace třídy
+        class Kbelik {
+            constructor(maxobjem){
+                this.maxObjem = maxobjem;
+                this.objem = 0;
+            }
+
+            napln(){
+                this.objem = this.maxObjem;           
+            }
+            vylej() {
+                this.objem = 0;
+            }
+            prilej(voda){
+                if(voda + this.objem > this.maxObjem)
+                {
+                    console.log("Vylil si vodu, blbečku");
+                    this.objem = this.maxObjem;
+                } else {
+                    this.objem += voda;
+                }
+            }
+            prelejDo(kyblik) {
+                if(this.objem + kyblik.objem > kyblik.maxObjem){
+                    console.log("Tos nevypočítal!");
+                    this.objem -= kyblik.maxObjem-kyblik.objem;
+                    kyblik.objem = kyblik.maxObjem;
+                } else {
+                    kyblik.objem += this.objem;
+                    this.objem = 0;
+                }
+            }
+
+        }
+
+
+        // a pro kontrolu
+        let prvniKbelik = new Kbelik(7);
+        console.log(prvniKbelik.objem); //ukáže 0
+        prvniKbelik.napln();
+        console.log(prvniKbelik.objem); //ukáže 7
+        prvniKbelik.vylej();
+        console.log(prvniKbelik.objem); //ukáže 0
+        prvniKbelik.prilej(2);
+        console.log(prvniKbelik.objem); //ukáže 2
+        prvniKbelik.prilej(3);
+        console.log(prvniKbelik.objem); //ukáže 5
+        prvniKbelik.prilej(3); //vypíše varování o přetečení
+        console.log(prvniKbelik.objem); //ukáže 7
+        prvniKbelik.vylej();
+
+
+        let druhyKbelik = new Kbelik(4);
+        druhyKbelik.napln();
+        druhyKbelik.prelejDo(prvniKbelik);
+        console.log(prvniKbelik.objem); //ukáže 4
+        console.log(druhyKbelik.objem); //ukáže 0
+        druhyKbelik.napln();
+        druhyKbelik.prelejDo(prvniKbelik); 
+        console.log(prvniKbelik.objem); //ukáže 7
+        console.log(druhyKbelik.objem); //ukáže 1
     </script>
 </body>
 </html>
