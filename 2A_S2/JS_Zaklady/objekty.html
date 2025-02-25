@@ -54,7 +54,87 @@
         console.log(osoba.batoh[1]);
         console.log(osoba.narozeniny.mesic);
 
+        //Vnořené objekty
 
+
+        let roky = 2020;
+
+        const zamestnanec = {
+            jmeno: "Juraj",
+            vek: 15,
+            pracoviste: null //nelze referovat na objekt, který ještě neexistuje
+        }
+
+        const kancelar = {
+            nazev: "SuperKancl",
+            zamestnanci: [
+                {jmeno: "Hanka", vek: 55},
+                {jmeno: "Bedřich", vek:35}
+            ],
+            vedouci: zamestnanec, //reference na objekt zamestnanec
+            zalozeno: roky, //vložení hodnoty proměnné roky do vlastnosti
+
+            //funkce jako vlastnost objektu
+            Vypis: function () {
+                for (let index = 0; index < this.zamestnanci.length; index++) {
+                    console.log(`${index+1}. ${this.zamestnanci[index].jmeno}, věk: ${this.zamestnanci[index].vek}.`)
+                    
+                }
+            }
+        };
+
+        console.log(kancelar.zamestnanci[0].jmeno);
+        console.log(kancelar.zamestnanci[1].vek);
+
+        zamestnanec.jmeno = "Jakub"; //měním vlastnost objektu a tedy i v referenci bude změněna
+        console.log(kancelar.vedouci.jmeno); 
+        kancelar.vedouci.jmeno = "Juraj"; //měním vlastnost objektu přes referenci, změní se vlastnost objektu
+        console.log(zamestnanec.jmeno);
+
+        console.log(kancelar.zalozeno); //2020
+        roky = 2025;
+        console.log(kancelar.zalozeno); //2020
+
+        zamestnanec.pracoviste = kancelar;
+        console.log(zamestnanec);
+
+        //smazání vlastnosti
+        delete kancelar.vedouci; //smazání vlastnosti
+        console.log(kancelar);
+
+        //funkce
+        function Pozdrav(osoba) {
+            console.log(`Ahoj, já jsem ${osoba.jmeno} a je mi ${osoba.vek}.`)
+        }
+
+        Pozdrav(zamestnanec);
+        Pozdrav(kancelar.zamestnanci[0]);
+
+
+        //Volání metody objektu
+        kancelar.Vypis();
+
+        //Class (konstruktory)
+
+        class Ctverec {
+            constructor(h) {
+                this.hrana = h;
+            }
+
+            obsah() {
+                return this.hrana * this. hrana
+            }
+        }
+
+        const ctverecA = new Ctverec(5);
+        console.log(ctverecA);
+        console.log(ctverecA.obsah());
+
+
+        //entries
+        for(let zaznam of Object.entries(zamestnanec)){
+            console.log(zaznam[0] + " " + zaznam[1]);
+        }
     </script>
 </body>
 </html>
