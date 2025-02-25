@@ -186,6 +186,69 @@
             console.log(zaznam);
             console.log(`${zaznam[0]}: ${zaznam[1]}`);
         }
+
+        //Procvičení
+        // Vytvořte prázdné pole rocniObdobi
+        let rocniObdobi = [];
+
+
+        // Vytvořte objekt zima s vlastností nazev nastavenou na "Zima" 
+        const zima = { nazev: "Zima"};
+       
+        const jaro = { nazev: "Jaro"};
+        const leto = { nazev: "Léto"};
+        const podzim = { nazev: "Podzim"}; 
+
+        // a vložte jej do pole, stejně tak jaro atd. Pole bude nyní 
+        // obsahovat 4 objekty.
+        rocniObdobi.push(zima,jaro,leto,podzim);
+
+
+
+        // Zařiďte, aby každý objekt měl nastavenu položku pristiObdobi 
+        // odkazující na skutečné příští období. Jiné položky, než nazev 
+        // a pristiObdobi žádný objekt mít nesmí.
+        for (let index = 0; index < rocniObdobi.length; index++) {
+                if(index == rocniObdobi.length-1)
+                    {
+                        rocniObdobi[index].pristiObdobi = rocniObdobi[0]
+                    } else {
+                        rocniObdobi[index].pristiObdobi = rocniObdobi[index+1]
+                    }
+        }
+
+
+        // Vypište pole rocniObdobi pro kontrolu na konzoli
+        console.log(rocniObdobi);
+
+
+        // Vytvořte funkci predchoziObdobi(obdobi), která obdrží předané 
+        // nějaké období a vrátí k němu předchozí
+        function predchoziObdobi(obdobi) {
+            for (let index = 0; index < rocniObdobi.length; index++) {
+               if(rocniObdobi[index].pristiObdobi == obdobi)
+               {
+                return rocniObdobi[index];
+               }
+                
+            }
+            
+            /*
+            for (let index = 0; index < rocniObdobi-1; index++) {
+                obdobi = obdobi.pristiObdobi;
+            }
+            return obdobi;
+            */
+            //return obdobi.pristiObdobi.pristiObdobi.pristiObdobi
+        }
+
+
+        //a vyzkoušíme
+        console.log(predchoziObdobi(jaro).nazev); // zima
+        console.log(predchoziObdobi(rocniObdobi[0]).nazev); //podzim ;)
+        console.log(predchoziObdobi(leto).nazev); // jaro
+        console.log(predchoziObdobi(rocniObdobi[3]).nazev); // podzim
+
     </script>
 </body>
 </html>
