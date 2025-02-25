@@ -84,6 +84,108 @@
         objektB. druhyObjekt =  objektA;
         
         console.log(objektA);
+
+
+        //Ref vs. hodnota
+        
+
+        const human = {
+            name: "George",
+            age: 15,
+            //metoda objektu
+            Starnuti: function() {
+                this.age++
+            }
+        };
+
+        let populationM = 8062;
+        const world = {
+            humans: [human],
+            //vytváří se pouze reference (odkaz) na objekt human
+            population: populationM
+        }
+
+        human.name = "Ricardo"; //když manipuluji s objektem
+        console.log(world.humans[0].name); //v rámci reference se manipulace propíše
+
+        world.humans[0].name = "Jacob";
+        console.log(human.name);
+
+        populationM = 9100;
+        console.log(world.population);
+
+        //Metody objektu
+
+        //přidání metody objektu
+        human.introduction = function() {
+            console.log(`Hello I'am ${this.name} and ${this.age} years old`);
+        }
+
+        human.introduction();
+        human.Starnuti();
+        human.Starnuti();
+        human.Starnuti();
+        human.introduction();
+
+        //Třída a konstruktory
+        class Car {
+            constructor(automat, brand) {
+                this.wheels = 4;
+                this.motor = 1;
+                this.automat = automat;
+                this.brand = brand;
+            }
+            Go() {
+                if(this.wheels == 4)
+            {
+                return "brm brm brm";
+            } else {
+                return "auto nejede";
+            }
+            }
+        }
+
+        const mojeAuto = new Car(true, "BMW");
+        const sousedAuto = new Car(false, "Toyota");
+
+        console.log(mojeAuto);
+        console.log(mojeAuto.Go());
+        sousedAuto.wheels = 0;
+        console.log(sousedAuto.Go());
+
+        //Dědičnost tříd
+        class Model extends Car {
+            constructor(automat, brand) {
+                super(automat, brand) //tohle se pošle do konstruktoru třídě rodičovské
+            }
+
+            Show() {
+                return `Look at my car ${this.brand} with ${this.wheels} wheels!`
+            }
+        }
+
+        //mojeAuto.Show();
+        mojeNoveAuto = new Model(true, "Fabia");
+        console.log(mojeNoveAuto.Show());
+
+        //Prototype -> dá se všem objektům vzniklé z dané třídy
+        Car.prototype.spz = "0L100L";
+
+        console.log(mojeAuto.spz);
+        console.log(sousedAuto.spz);
+
+        //Iterace v objektu pomocí entries a values
+
+        for(let hodnota of Object.values(mojeNoveAuto))
+        {
+            console.log(hodnota);
+        }
+
+        for(let zaznam of Object.entries(mojeNoveAuto))
+        {
+            console.log(zaznam);
+            console.log(`${zaznam[0]}: ${zaznam[1]}`);
+        }
     </script>
 </body>
 </html>
