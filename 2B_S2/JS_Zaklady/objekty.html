@@ -96,6 +96,14 @@
                 {jmeno: "Dominik", vek: 12}
             ],
 
+            //funkce v objektu
+            vypisPracovniky: function() {
+                for (let index = 0; index < this.pracovnici.length; index++) {
+                    console.log(`${index+1}. pracovník: ${this.pracovnici[index].jmeno}, věk:${this.pracovnici[index].vek}`);
+                    
+                }
+            }
+
         }
 
         //přidání vlastnosti zaměstnanci, reference na objekt kancelár
@@ -104,7 +112,62 @@
 
         console.log(kancelar);
 
+        kancelar.vypisPracovniky();
 
+        //Třída s konstruktorem
+        class Human {
+            //zavolá si při vytváření objektu z této třídy
+            constructor(n,a) {
+                this.name = n;
+                this.age = a;
+            }
+
+            introduction() {
+                console.log(`Hello, I'm ${this.name} and I'm ${this.age} years old.`);
+            }
+        }
+
+        //Dědičnost třídy
+        class Student extends Human {
+            constructor(y,n,a){
+                super(n,a); //tohle se předá konstruktoru rodičovské třídy
+                this.grade = y;
+            }
+            grade() {   
+                console.log(`Hi, I'm ${this.name} and I'm in ${this.grade}.`);
+            }
+        }
+
+        //Vytvoření objektu z třídy s argumenty pro parametry konstuktoru
+        const person = new Human("Gustav",19);
+
+        person.introduction();
+
+        console.log(person.name);
+
+        //Vytvoření objektu z třídy, která dědí z jiné
+        const student3 = new Student(2,"Richard",50);
+        student3.introduction();
+        //student3.grade();
+
+        //Prototype
+        Human.prototype.nationality = "Czech";
+        //přidá vlastnost nationality všem objektům z třídy Human
+
+        console.log(student3.nationality + person.nationality);
+
+
+        //Projít hodnoty objektu
+
+        for(let vlastnost of Object.values(student3))
+        {
+            console.log(vlastnost);
+        }
+
+        for(let zaznam of Object.entries(student3)){
+            console.log(zaznam);
+            console.log(zaznam[0] + " " + zaznam[1]);
+        }
 
     </script>
 </body>
