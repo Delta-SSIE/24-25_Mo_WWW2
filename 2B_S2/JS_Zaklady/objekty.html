@@ -169,6 +169,131 @@
             console.log(zaznam[0] + " " + zaznam[1]);
         }
 
+        //Procvičení Roční období
+        // Vytvořte prázdné pole rocniObdobi
+        let rocniObdobi = [];
+
+
+        // Vytvořte objekt zima s vlastností nazev nastavenou na "Zima" 
+        const zima = {nazev: "Zima"};
+        const jaro = {nazev: "Jaro"};
+        const leto = {nazev: "Léto"};
+        const podzim = {nazev: "Podzim"};
+        // a vložte jej do pole, stejně tak jaro atd. Pole bude nyní 
+        // obsahovat 4 objekty.
+        rocniObdobi.push(jaro,leto,podzim,zima);
+
+
+
+        // Zařiďte, aby každý objekt měl nastavenu položku pristiObdobi 
+        // odkazující na skutečné příští období. Jiné položky, než nazev 
+        // a pristiObdobi žádný objekt mít nesmí.
+        for (let index = 0; index < rocniObdobi.length; index++) {
+            if(index == rocniObdobi.length-1)
+            {
+                rocniObdobi[index].pristiObdobi = rocniObdobi[0];
+            } else {
+                rocniObdobi[index].pristiObdobi = rocniObdobi[index+1];
+            }
+        }
+
+
+        // Vypište pole rocniObdobi pro kontrolu na konzoli
+        console.log(rocniObdobi);
+
+
+        // Vytvořte funkci predchoziObdobi(obdobi), která obdrží předané 
+        // nějaké období a vrátí k němu předchozí
+        function predchoziObdobi(obdobi) {
+            return obdobi.pristiObdobi.pristiObdobi.pristiObdobi;
+            
+            /*
+            for (let index = 0; index < rocniObdobi.length; index++) {
+                if(rocniObdobi[index].pristiObdobi == obdobi)
+                    {
+                        return rocniObdobi[index];
+                    }
+                
+            }
+                    */
+        }
+
+
+        //a vyzkoušíme
+        console.log(predchoziObdobi(jaro).nazev); // zima
+        console.log(predchoziObdobi(rocniObdobi[0]).nazev); // taktéž zima ;-)
+        console.log(predchoziObdobi(leto).nazev); // jaro
+        console.log(predchoziObdobi(rocniObdobi[3]).nazev); // podzim
+
+        //Kbelíky
+        //sem přijde deklarace třídy
+        class Kbelik {
+            constructor(mO)
+            {
+                this.maxObjem = mO;
+                this.objem = 0;
+            }
+
+            napln() {
+                this.objem = this.maxObjem;
+            }
+
+            vylej(){
+                this.objem = 0;
+            }
+
+            prilej(objemVody) {
+                if(this.objem + objemVody > this.maxObjem){
+                    console.log('Leješ na zem vodu, blbečku!');
+                    this.objem = this.maxObjem;
+                } else {
+                    this.objem += objemVody;
+                }
+
+            }
+
+            prelejDo(druhyKbelik){
+                if(druhyKbelik.objem + this.objem > druhyKbelik.maxObjem)
+                {
+                    console.log("Příliš mnoho vody");
+                    this.objem -=druhyKbelik.maxObjem-druhyKbelik.objem
+                    druhyKbelik.objem = druhyKbelik.maxObjem;
+                } else {
+                    druhyKbelik.objem += this.objem
+                    this.objem = 0;
+                }
+            }
+        }
+
+
+
+        // a pro kontrolu
+        let prvniKbelik = new Kbelik(7);
+        console.log(prvniKbelik.objem); //ukáže 0
+        prvniKbelik.napln();
+        console.log(prvniKbelik.objem); //ukáže 7
+        prvniKbelik.vylej();
+        console.log(prvniKbelik.objem); //ukáže 0
+        prvniKbelik.prilej(2);
+        console.log(prvniKbelik.objem); //ukáže 2
+        prvniKbelik.prilej(3);
+        console.log(prvniKbelik.objem); //ukáže 5
+        prvniKbelik.prilej(3); //vypíše varování o přetečení
+        console.log(prvniKbelik.objem); //ukáže 7
+        prvniKbelik.vylej();
+
+
+        let druhyKbelik = new Kbelik(4);
+        druhyKbelik.napln();
+        druhyKbelik.prelejDo(prvniKbelik);
+        console.log(prvniKbelik.objem); //ukáže 4
+        console.log(druhyKbelik.objem); //ukáže 0
+        druhyKbelik.napln();
+        druhyKbelik.prelejDo(prvniKbelik); 
+        console.log(prvniKbelik.objem); //ukáže 7
+        console.log(druhyKbelik.objem); //ukáže 1
+                    
+
     </script>
 </body>
 </html>
