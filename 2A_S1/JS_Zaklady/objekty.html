@@ -98,7 +98,13 @@
                 {jmeno: "Jaromír", vek: 50},
                 {jmeno: "Jindřich", vek: 40},
                 {jmeno: "Jarmila", vek: 12}
-            ]
+            ],
+            vypis: function() {
+                for (let index = 0; index < this.zamestnanci.length; index++) {
+                    console.log(`${index+1}. ${this.zamestnanci[index].jmeno}, věk: ${this.zamestnanci[index].vek}!`)
+                    
+                }
+            }
         };
 
         osoba.pracoviste = kancelar; //tady už kancelář existuje, takže můžu na ní dát odkaz
@@ -111,6 +117,137 @@
         let pole2 = pole1; //nepřepisují se hodnoty, pouze se vytváří reference na pole1
         pole1[0] = "purpurová";
         console.log(pole2);
+
+        //Procvičení Roční období
+            // Vytvořte prázdné pole rocniObdobi
+            let rocniObdobi = [];
+
+
+            // Vytvořte objekt zima s vlastností nazev nastavenou na "Zima" 
+            // a vložte jej do pole, stejně tak jaro atd. Pole bude nyní 
+            // obsahovat 4 objekty.
+            const zima = { nazev: "Zima"};
+            const jaro = { nazev: "Jaro"};
+            const leto = { nazev: "Léto"};
+            const podzim = { nazev: "Podzim"};
+
+            rocniObdobi.push(jaro,leto,podzim,zima)
+
+            // Zařiďte, aby každý objekt měl nastavenu položku pristiObdobi 
+            // odkazující na skutečné příští období. Jiné položky, než nazev 
+            // a pristiObdobi žádný objekt mít nesmí.
+            //zima.pristiObdobi = jaro;
+            for (let index = 0; index < rocniObdobi.length; index++) {
+                if(index == rocniObdobi.length-1)
+                {
+                    rocniObdobi[index].pristiObdobi = rocniObdobi[0]
+                } else 
+                {
+                    rocniObdobi[index].pristiObdobi = rocniObdobi[index+1];
+                }
+
+            }
+
+            // Vypište pole rocniObdobi pro kontrolu na konzoli
+            console.log(rocniObdobi);
+
+
+            // Vytvořte funkci predchoziObdobi(obdobi), která obdrží předané 
+            // nějaké období a vrátí k němu předchozí
+            function predchoziObdobi(obdobi) {
+             return obdobi.pristiObdobi.pristiObdobi.pristiObdobi;
+               
+               /*
+               for (let index = 0; index < rocniObdobi.length; index++) {
+                if(rocniObdobi[index].pristiObdobi == obdobi)
+                    {
+                        return rocniObdobi[index];
+                    }
+               }
+                */
+            }
+
+
+            //a vyzkoušíme
+            console.log(predchoziObdobi(jaro).nazev); // zima
+            console.log(predchoziObdobi(rocniObdobi[0]).nazev); // taktéž zima ;-)
+            console.log(predchoziObdobi(leto).nazev); // jaro
+            console.log(predchoziObdobi(rocniObdobi[3]).nazev); // podzim
+
+            //funkce
+
+            kancelar.vypis();
+
+            kancelar.nejstarsi = function() {
+                let Nejindex = 0;
+                for (let index = 0; index < this.zamestnanci.length; index++) {
+                        if(this.zamestnanci[Nejindex].vek < this.zamestnanci[index].vek)
+                        {
+                            Nejindex = index;
+                        }                   
+                }
+                return this.zamestnanci[Nejindex].jmeno;
+             }
+
+             console.log(kancelar.nejstarsi());
+
+             class Clovek {
+                //konstruktor třídy s parametry j a v
+                constructor(j,v){
+                    this.vek = v;
+                    this.jmeno = j;
+                }
+
+                PredstavSe() {
+                    return `Mé jméno je ${this.jmeno} a je mi ${this.vek}`
+                }
+             }
+
+             //třída dědíci z třídy Člověk
+             class Student extends Clovek {
+                constructor(j,v,r){
+                    super(j,v) //posílám argumenty pro konstruktor rodičovské třídy
+                    this.rocnik = r;
+                }
+
+                Pozdrav() {
+                    return `Ahoj, já jsem ${this.jmeno} a chodím do ${this.rocnik}. ročníku školy!`
+                }
+             }
+
+             //nový objekt ze třídy - dva argumenty pro konstruktor
+             const person = new Clovek("Jarda",25);
+             console.log(person.PredstavSe());
+
+             //Vytvoření objektu ze třídy, která dědí z jiné třídy
+             const zak = new Student("Jiří",12,1);
+             console.log(zak.PredstavSe());
+             console.log(zak.Pozdrav());
+
+             //Prototype - dá všem objektům z dané třídy novou vlastnost, či metodu
+             Clovek.prototype.narodnost = "Česká";
+             console.log(zak.narodnost);
+             console.log(person.narodnost);
+
+             //Průchod objektem
+
+             //průchod objektem po hodnotách vlastností
+             for(let hodnota of Object.values(zak))
+             {
+                console.log(hodnota);
+             }
+
+             //průchod po záznamech
+             // [0] - nazev vlastnosti a [1] - hodnota vlastnosti
+             for(let zaznam of Object.entries(zak))
+             {
+                console.log(zaznam);
+                console.log(zaznam[0] + " " + zaznam[1]);
+             }
+
+
+
+
 
     </script>
 </body>
