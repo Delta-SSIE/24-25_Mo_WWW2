@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_web_uvod</title>
+</head>
+<body>
+    <h1>Tohle je skutečný web</h1>
+    <p id="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel officiis excepturi fugit dicta, commodi pariatur expedita cupiditate dolorum iste perferendis quo, ea doloribus nihil accusantium, inventore similique. Nesciunt, assumenda enim.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, possimus! Aliquid assumenda eaque, facere sed saepe qui rem, perferendis, laborum cupiditate maiores recusandae asperiores exercitationem ratione sunt eum! Expedita, consequuntur.</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nemo repellendus consequuntur laboriosam expedita mollitia, quidem ut omnis. Autem fugiat voluptatem pariatur voluptatum asperiores, necessitatibus maxime, nemo distinctio, ut vel culpa?</p>
+    <script>
+        //document.write
+
+        document.write("Ahoj!");
+        document.write("<h1>Ahooooj</h1>");
+
+        //window - alert, prompt, confirm
+
+        //window.alert("Pozor pozor!");
+        //let jmeno = window.prompt("Dej mi jméno, jinak se ti stane něco špatného","Nahodné jméno");
+        //document.write(`<h2>Najdu si tě ${jmeno}</h2>`);
+        
+        //let udani = window.confirm("Chceš udat svého kamaráda?");
+        //document.write(`${(udani) ? "Státni služba děkuje!" : "Tohle jsme si nedomluvili..."}`);
+        
+        let odstavec = document.getElementById("text");
+        odstavec.innerHTML = "Ahooooj";
+        odstavec.innerHTML += " To jsi nečekal!"
+
+        let zprava = window.prompt("Zadej mi zprávu a já jí nikomu neřeknu", "Tajná zpráva");
+        odstavec.innerHTML = `Lhal jsem: ${zprava} `;
+    
+        let odstavce = document.getElementsByTagName('p');
+        console.log(odstavce);
+
+        odstavce[1].innerHTML = "Tohle je text pro 2. odstvec!"
+    </script>
+</body>
+</html>

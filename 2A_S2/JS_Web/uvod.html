@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_Web_Uvod</title>
+</head>
+<body>
+
+    <p id="test-input">Původní text</p>
+    
+    <script>
+        //Základní způsob výpisu na stránku
+        document.write("Hello!");
+        document.write("<p>tohle je odstavec</p>");
+
+        //Vyskakovací okno
+        //window.alert("Pozor!");
+
+        //prompt
+        //let input = window.prompt("Zadej mi jméno","Nahodné jměno");
+        //document.write(input);
+
+        //confirm
+        // let confirm = window.confirm("Chcete pokračovat?");
+        //document.write(confirm);
+
+        //do proměnné nahraji referenci na objekt v HTML kodu nalezený dle id
+        let odstavec = document.getElementById("test-input");
+        //využívám referenci k tomu, abych propisoval obsah do vnitřní struktury HTML (mezi tagy daného elementu v HTML)
+        odstavec.innerHTML = "Tohle je moje věta propsaná."
+        odstavec.innerHTML += " A tohle je druhá věta"
+    </script>
+</body>
+</html>
