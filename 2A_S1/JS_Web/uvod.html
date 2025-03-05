@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS_Web</title>
+</head>
+<body>
+    <h1 id="nadpis">Nadpis 1</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae numquam accusantium enim rem, velit consectetur commodi, nulla quasi aut nisi quae? Perspiciatis tenetur delectus accusamus sequi esse velit veniam cumque.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere iure veniam unde, illo beatae odio officiis repellendus quis cumque veritatis aspernatur soluta! Mollitia illum a praesentium tempora, reprehenderit commodi ipsum!</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum ad velit labore, id commodi ratione nemo eveniet. Ducimus, impedit ipsam laudantium, adipisci perspiciatis sit quisquam saepe corrupti magnam, sed nobis.</p>
+    <script>
+        document.write("Ahoooooj!");
+        document.write("<h2>Ahoooooj!</h2>");
+
+        //window.alert("Pozor!");
+        //let jmeno = window.prompt("Zadej mi své jméno","Jméno");
+        //document.write(jmeno);
+
+        //let potvrzeni = window.confirm("Chceš udat svého kamaráda?");
+        //document.write(`${(potvrzeni) ? "Státní služba děkuje!" : "Máme vaši adresu a nebojíme se jí použít!"}`);        
+        
+        let nadpis = document.getElementById("nadpis");
+        nadpis.innerHTML = "Lepší nadpis";
+        console.log(nadpis);
+        console.log(document.body);
+
+        let odstavce = document.getElementsByTagName("p");
+        console.log(odstavce);
+        odstavce[1].innerHTML = "Nový text 2. odstavce";
+        odstavce[2].innerHTML += " Dovětek k třetímu odstavci!";
+    </script>
+</body>
+</html>
