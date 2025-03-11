@@ -84,3 +84,7 @@ body {
 .footer-text {
     font-size: 14px;
 }
+
+#fruit {
+    color: red;
+}
