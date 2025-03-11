@@ -30,3 +30,24 @@ listItemy[3].setAttribute('id','red');
 
 //Nové prvky na web
 
+let superNadpis = document.createElement('h1');
+superNadpis.innerHTML = "Nejlepší nadpis v dějinách lidstva";
+superNadpis.style.color = "gold";
+superNadpis.className = "title";
+document.body.appendChild(superNadpis);
+
+let seznam = document.querySelector('#list-section ul');
+
+let noveOvoce = document.createElement('li');
+let text = document.createTextNode('Ananas');
+noveOvoce.appendChild(text);
+noveOvoce.classList.add('fruit-item');
+seznam.appendChild(noveOvoce);
+
+for (let index = 0; index < 20; index++) {
+    let mangoItem = document.createElement('li');
+    mangoItem.innerHTML = index+1 + ". " + "Mango";
+
+    mangoItem.className = "fruit-item";
+    seznam.appendChild(mangoItem);
+}
