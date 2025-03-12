@@ -25,3 +25,30 @@ console.log(obrazek);
 let obrazkyy = document.querySelectorAll('#image-gallery img');
 console.log(obrazkyy);
 
+//Přidávání prvků na web
+let odstavec = document.createElement('p');
+odstavec.innerHTML = "text nového odstavce";
+odstavec.style.color = "green";
+
+let lepsiodstavec = document.createElement('p');
+lepsiodstavec.innerHTML = "text lepšího odstavce";
+lepsiodstavec.style.color = "red";
+
+let body = document.body;
+body.appendChild(odstavec);
+
+body.replaceChild(lepsiodstavec,odstavec);
+
+//nové prvky do ul My Favorite Fruits
+
+let seznam = document.querySelector('ul');
+
+for (let index = 0; index < 20; index++) {
+    let noveOvoce = document.createElement('li');
+    let text = document.createTextNode('Ananas');
+    noveOvoce.appendChild(text);
+    noveOvoce.style.color = "yellow"
+    noveOvoce.className = "fruit-item";
+    seznam.appendChild(noveOvoce);
+}
+
