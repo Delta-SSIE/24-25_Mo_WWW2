@@ -1,0 +1,25 @@
+<!-- Tento soubor neměňte -->
+<!-- Smíte pouze smazat atributy onkeyup, pokud chcete event listenery registrovat jinak -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <form>
+        <div><label for="oldpass">Old password:</label><input type="password" name="oldpass" id="oldpass" onkeyup="passChange();"></div>
+        <div><label for="pass">Your password:</label><input type="password" name="pass" id="pass" onkeyup="passChange();"></div>
+        <div><label for="pass2">Verify password:</label><input type="password" name="pass2" id="pass2" onkeyup="passChange();"></div>
+
+        <div id="warning"></div>
+        <div><input type="submit" id="submit" value="Change password" disabled="disabled"></div>
+
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>
