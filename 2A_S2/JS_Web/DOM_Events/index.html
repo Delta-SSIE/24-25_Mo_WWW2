@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web_Events</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="nadpis" onclick="color(this)" onmousedown="border(this)" onmouseleave="noborder(this)">Events</h1>
+    <div id="box"></div>
+
+    <input type="text" id="txt">
+    <button id="button">Submit</button>
+    <button id="dis">Disable</button>
+    <p id="vystup"></p>
+    <script>
+
+
+        let input = document.getElementById('txt');
+        let button = document.getElementById('button')
+        let vystup = document.getElementById('vystup')
+        let dis = document.getElementById('dis');
+
+        dis.addEventListener("click", () => button.removeEventListener("click",Vypis));
+
+        button.addEventListener("click", Vypis);
+
+
+        function Vypis()
+        {
+            vystup.innerHTML += input.value;
+        }
+
+        input.oninput = () => button.disabled = "disabled";
+        input.onchange = () => button.disabled = "";
+
+        let box = document.getElementById('box');
+
+        box.onmouseover = () => box.style.backgroundColor = "green";
+        box.onmouseleave = () => box.style.backgroundColor = "red";
+
+        function noborder(id)
+        {
+            id.style.border = "";
+        }
+
+
+        function border(id)
+        {
+            id.style.border = "5px solid red";
+        }
+
+        function color(id)
+        {
+            if(id.style.color == "red")
+            {
+                id.style.color = "black";
+            }
+            else {
+                id.style.color = "red";
+            }
+            
+        }
+    </script>
+</body>
+</html>
