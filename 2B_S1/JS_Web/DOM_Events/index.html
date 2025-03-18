@@ -13,9 +13,60 @@
     </style>
 </head>
 <body>
+    <h1 onclick="barva(this)" onmousedown="border(this)" onmouseleave="noborder(this)">Nadpis</h1>
+    <input type="text" name="" id="txt">
     <div id="box"></div>
+    <input type="text" id="psani">
+    <p id="textarea"></p>
+    <button id="stop">Prestan psát!</button>
     <script>
+        //listener
+        let psani = document.getElementById('psani');
+        let but = document.getElementById('stop');
+        let textzona = document.getElementById('textarea');
+        psani.addEventListener("change",Psani);
+        but.addEventListener("click", () => psani.removeEventListener("change",Psani));
+        
 
+        function Psani()
+        {
+            textzona.innerHTML += psani.value;
+        }
+
+
+
+        let box = document.getElementById('box');
+        box.addEventListener("click", () => BoxBarva("green"));
+        box.addEventListener("dblclick",() => BoxBarva("red"));
+
+        function BoxBarva(barva) {
+            box.style.backgroundColor = barva;
+        }
+
+
+        //trigger nebo handler
+        let input = document.getElementById('txt');
+
+        input.oninput = () => {input.style.backgroundColor = "green"};
+        input.onchange = () => {input.style.backgroundColor = "white"};
+        function noborder(id)
+        {
+            id.style.border = ""
+        }
+        function border(id)
+        {
+            id.style.border = "5px solid red"
+        }
+
+        function barva(id)
+        {
+            if(id.style.color == "red")
+            {
+                id.style.color = "black"
+            } else {
+                id.style.color = "red"
+            }
+        }
     </script>
 </body>
 </html>
