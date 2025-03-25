@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive List</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 5px;
+            border: 1px solid black;
+            margin: 2px 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="textInput" placeholder="Enter text">
+    <button id="submitButton">Submit</button>
+    <ul id="itemList"></ul>
+
+    <fieldset>
+        <legend>Event Listener Action</legend>
+        <input type="radio" name="eventAction" value="insert" checked> Insert Listener<br>
+        <input type="radio" name="eventAction" value="remove"> Remove Listener<br>
+        <input type="radio" name="eventAction" value="manipulate"> Manipulate<br>
+    </fieldset>
+
+    <fieldset>
+        <legend>Change Type</legend>
+        <input type="radio" name="changeType" value="color" checked> Color<br>
+        <input type="radio" name="changeType" value="background"> Background Color<br>
+    </fieldset>
+
+    <fieldset>
+        <legend>Color Selection</legend>
+        <input type="radio" name="colorChoice" value="blue" checked> Blue<br>
+        <input type="radio" name="colorChoice" value="red"> Red<br>
+        <input type="radio" name="colorChoice" value="green"> Green<br>
+        <input type="text" id="customColor" placeholder="Enter custom color">
+    </fieldset>
+
+    <script>
+        document.getElementById("submitButton").addEventListener("click", function() {
+            let textInput = document.getElementById("textInput").value;
+            if (textInput.trim() !== "") {
+                let li = document.createElement("li");
+                li.textContent = textInput;
+                li.addEventListener("dblclick", function() {
+                    li.remove();
+                });
+                li.addEventListener("click", function() {
+                let selectedAction = document.querySelector('input[name="eventAction"]:checked').value;
+                let selectedType = document.querySelector('input[name="changeType"]:checked').value;
+                let selectedColor = document.querySelector('input[name="colorChoice"]:checked').value;
+                let customColor = document.getElementById("customColor").value.trim();
+                let finalColor = customColor || selectedColor;
+                
+                if (selectedAction === "insert") {
+                    if(selectedType === "color")
+                {
+                    li.addEventListener("click", function changeColor() {
+                        li.style[selectedType] = finalColor;
+                    });
+                }
+                if(selectedType === "background")
+                {
+                    li.addEventListener("click", function changeColorB() {
+                        li.style[selectedType] = finalColor;
+                    });
+                }
+                    
+                } else if (selectedAction === "remove") {
+                    if(selectedType === "color")
+                    {
+                    li.removeEventListener("click", function changeColor() {
+                        li.style[selectedType] = finalColor;
+                    });
+                }
+                if(selectedType === "background")
+                    {
+                    li.removeEventListener("click", function changeColorB() {
+                        li.style[selectedType] = finalColor;
+                    });
+                }
+                } else if (selectedAction === "manipulate") {
+                }
+              });
+                document.getElementById("itemList").appendChild(li);
+                document.getElementById("textInput").value = "";
+            }
+        });
+
+    </script>
+</body>
+</html>
