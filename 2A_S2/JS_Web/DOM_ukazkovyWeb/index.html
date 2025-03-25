@@ -52,48 +52,62 @@
                 li.addEventListener("dblclick", function() {
                     li.remove();
                 });
-                li.addEventListener("click", function() {
-                let selectedAction = document.querySelector('input[name="eventAction"]:checked').value;
-                let selectedType = document.querySelector('input[name="changeType"]:checked').value;
-                let selectedColor = document.querySelector('input[name="colorChoice"]:checked').value;
-                let customColor = document.getElementById("customColor").value.trim();
-                let finalColor = customColor || selectedColor;
                 
-                if (selectedAction === "insert") {
-                    if(selectedType === "color")
+                function changeColor() {
+                    let selectedColor = document.querySelector('input[name="colorChoice"]:checked').value;
+                    let customColor = document.getElementById("customColor").value.trim();
+                    let selectedAction = document.querySelector('input[name="eventAction"]:checked').value;
+                    let selectedType = document.querySelector('input[name="changeType"]:checked').value;
+                    let finalColor = customColor || selectedColor;
+                    if (selectedType === "color") {
+
+                    if (selectedAction === "manipulate")
                 {
-                    li.addEventListener("click", function changeColor() {
-                        li.style[selectedType] = finalColor;
-                    });
+                    li.style.color = finalColor;
                 }
-                if(selectedType === "background")
-                {
-                    li.addEventListener("click", function changeColorB() {
-                        li.style[selectedType] = finalColor;
-                    });
-                }
+            }
                     
-                } else if (selectedAction === "remove") {
-                    if(selectedType === "color")
+                }
+
+                function changeBackgroundColor() {
+                    let selectedColor = document.querySelector('input[name="colorChoice"]:checked').value;
+                    let customColor = document.getElementById("customColor").value.trim();
+                    let selectedAction = document.querySelector('input[name="eventAction"]:checked').value;
+                    let selectedType = document.querySelector('input[name="changeType"]:checked').value;
+                    let finalColor = customColor || selectedColor;
+                    if (selectedType === "background") {
+                    if (selectedAction === "manipulate")
                     {
-                    li.removeEventListener("click", function changeColor() {
-                        li.style[selectedType] = finalColor;
-                    });
+                        li.style.backgroundColor = finalColor;
+                    }
                 }
-                if(selectedType === "background")
-                    {
-                    li.removeEventListener("click", function changeColorB() {
-                        li.style[selectedType] = finalColor;
-                    });
                 }
-                } else if (selectedAction === "manipulate") {
-                }
-              });
+
+                li.addEventListener("click", function() {
+                    let selectedAction = document.querySelector('input[name="eventAction"]:checked').value;
+                    let selectedType = document.querySelector('input[name="changeType"]:checked').value;
+                    
+                    if (selectedAction === "insert") {
+                        if (selectedType === "color") {
+                            li.addEventListener("click", changeColor);
+                        } else if (selectedType === "background") {
+                            li.addEventListener("click", changeBackgroundColor);
+                        }
+                    } else if (selectedAction === "remove") {
+                        if (selectedType === "color") {
+                            li.removeEventListener("click", changeColor);
+                        } else if (selectedType === "background") {
+                            li.removeEventListener("click", changeBackgroundColor);
+                        }
+                    } else if (selectedAction === "manipulate") {
+                        // Add your manipulation code here
+                    }
+                });
+
                 document.getElementById("itemList").appendChild(li);
                 document.getElementById("textInput").value = "";
             }
         });
-
     </script>
 </body>
 </html>
