@@ -42,3 +42,31 @@ const films = new Map([
     ["Heat", { year: 1995, genre: "Action, Crime, Drama", director: "Michael Mann", rating: 8.3 }],
     ["Oldboy", { year: 2003, genre: "Action, Drama, Mystery", director: "Park Chan-wook", rating: 8.4 }]
   ]);
+
+
+
+  let seznam = document.getElementById('films');
+  let input = document.getElementById('filtr');
+
+  function VypisFilm()
+  {
+    let alpha = 0.1;
+    seznam.innerHTML = "";
+    for(let zaznam of films.entries())
+    {
+      if(zaznam[0].includes(input.value))
+      {
+        let film = document.createElement('li');
+        film.addEventListener("dblclick", () => films.delete(zaznam[0]));
+        film.addEventListener("dblclick", () => film.remove());
+        film.textContent = `${zaznam[0]}, rok vydání ${zaznam[1].year} a režie ${zaznam[1].director}`;
+        film.style.backgroundColor = `rgba(0,255,0,${alpha})`;
+        alpha += 0.05
+        seznam.appendChild(film);
+      }
+    }
+  }
+
+  input.addEventListener("keydown",VypisFilm)
+
+  VypisFilm();
