@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassList</title>
+    <style>
+        .red {
+            color: red;
+        }
+        .italic {
+            font-style: italic;
+        }
+        .background {
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <p id="text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus perspiciatis aliquam est commodi, ad sunt non quaerat quis? Accusamus totam atque iusto magni quam asperiores voluptatibus est quisquam quos quasi.</p>
+    <button id="italic">Italic</button>
+    <button id="red">Red</button>
+    <button id="background">Back</button>
+
+    <button id="removefs">Odeber první třídu</button>
+
+    <script>
+        let text = document.getElementById('text');
+        let red = document.getElementById('red');
+        let italic = document.getElementById('italic');
+        let background = document.getElementById('background');
+        let removefs = document.getElementById("removefs");
+
+
+        red.addEventListener("click", () => NastavTridu(red.id));
+        italic.addEventListener("click", () => NastavTridu(italic.id));
+        background.addEventListener("click", () => NastavTridu(background.id));
+
+        removefs.addEventListener("click", () => text.classList.remove(text.classList[0]));
+
+        function NastavTridu(id)
+        {
+            text.classList.toggle(id);
+            console.log(text.classList);
+        }
+        
+    </script>
+</body>
+</html>
