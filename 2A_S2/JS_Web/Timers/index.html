@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timers</title>
+</head>
+<body>
+    <p id="text"></p>
+    <button id="stop"> Zastav </button>
+
+
+    <script>
+        let txt = document.getElementById('text');
+        let stop = document.getElementById('stop');
+
+        //let ahoj = window.setInterval(Ahoj, 2000);
+
+        stop.addEventListener("click",() => window.clearInterval(ahoj));
+
+        //let cas = window.setInterval(Cas, 5000);
+
+        let stopky = window.setInterval(Start, 1000);
+
+        let interval = 0;
+        function Start()
+        {
+
+            txt.innerHTML = interval;
+            interval++;
+        }
+
+
+
+        function Ahoj()
+        {
+            txt.innerHTML += "Ahoj"
+        }
+
+        function Cas()
+        {
+            let cas = new Date()
+            txt.innerHTML = cas.getSeconds(); 
+        }
+
+    </script>
+</body>
+</html>
