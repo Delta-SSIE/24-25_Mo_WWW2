@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopky</title>
+</head>
+<body>
+    <h1>Stopky</h1>
+    <p id="stopky"></p>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+    <button id="kolo">Mezikolo</button>
+    <button id="reset">Reset</button>
+    <h1>Mezikola</h1>
+    <ul id="mezikola">
+
+    </ul>
+
+    <script>
+        let stopky = document.getElementById('stopky');
+        let start = document.getElementById('start');
+        let stop = document.getElementById('stop');
+        let kolo = document.getElementById('kolo');
+        let mezikola = document.getElementById('mezikola');
+
+        let pocitadlo = 0;
+
+        let cas;
+
+        start.addEventListener("click",Start);
+        stop.addEventListener("click", () => window.clearInterval(cas));
+
+        kolo.addEventListener("click", Mezikolo);
+
+        reset.addEventListener("click", Zastav);
+
+        function Zastav()
+        {
+            stopky.innerHTML = "00:00:00";
+            pocitadlo = 0;
+            window.clearInterval(cas);
+            mezikola.innerHTML = "";
+        }
+
+        function Mezikolo()
+        {
+            let novycas = document.createElement('li');
+            novycas.innerHTML = FormatujCas(pocitadlo);
+            mezikola.appendChild(novycas);
+        }
+        
+        function Start()
+        {
+            cas = window.setInterval(Tik,1000);
+        }
+
+        function Tik()
+        {
+            pocitadlo++;
+            stopky.innerHTML = FormatujCas(pocitadlo);
+        }
+
+        function FormatujCas(time)
+        {
+            let sekundy = time % 60;
+            let minuty = (time > 60) ? (time - sekundy / 60) : 0;
+            let hodiny = (time > 3600) ? (time - sekundy - minuty / 60) : 0;
+            return `${(hodiny < 10) ? "0"+hodiny : hodiny}:${(minuty < 10) ? "0"+minuty : minuty}:${(sekundy < 10) ? "0"+sekundy : sekundy}`
+        }
+
+
+    </script>
+</body>
+</html>
