@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClassList</title>
+    <style>
+        .red {
+            color: red
+        }
+        .italic {
+            font-style: italic;
+        }
+        .background {
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <p id="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit consequuntur praesentium porro itaque eum ducimus expedita adipisci quam minus, doloremque doloribus minima consequatur, hic et mollitia quasi corrupti architecto ad!</p>
+    <div id="buttons">
+        <button id="red">Red</button>
+        <button id="italic">Italic</button>    
+        <button id="background">Background</button>    
+    </div>
+    <button id="odeber">Odeber první třídu</button>
+    <button id="vypis">Vypiš</button>
+    <p id="textarea"></p>
+    <script>
+        let txt = document.getElementById('txt');
+        let buttons = document.querySelectorAll('#buttons button');
+        let odeber = document.getElementById('odeber');
+        let btnvypis = document.getElementById('vypis');
+        let area = document.getElementById('textarea')
+
+        for (let index = 0; index < buttons.length; index++) {
+           buttons[index].addEventListener("click", () => ChangeClass(buttons[index].id))
+        }
+
+        function ChangeClass(prvek)
+        {
+            txt.classList.toggle(prvek);
+            console.log(txt.classList);
+        }
+
+        odeber.addEventListener("click", () => txt.classList.remove(txt.classList[0]));
+        btnvypis.addEventListener("click", () => area.innerHTML = txt.classList)
+   </script>
+</body>
+
+</html>
