@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopky</title>
+</head>
+<body>
+    <p id="display">00:00:00</p>
+    <button id="s">Start</button>
+    <button id="sto">Stop</button>
+    <button id="k">Kolo</button>
+
+    <script>
+        let display = document.getElementById('display');
+        let s = document.getElementById('s');
+        let sto = document.getElementById('sto');
+        let k = document.getElementById('k');
+
+        let pocitadlo = 0;
+        let timer;
+
+        s.addEventListener("click", () => timer = window.setInterval(Cas,1000));
+
+        sto.addEventListener("click",() => window.clearInterval(timer));
+
+        k.addEventListener("click",Pridejkolo);
+
+        function Pridejkolo()
+        {
+            let p = document.createElement('p');
+            p.innerHTML = Naformatujcas(pocitadlo);
+            document.body.appendChild(p);
+        }
+        
+        function Cas()
+        {
+            pocitadlo++;
+            display.innerHTML = Naformatujcas(pocitadlo);
+        }
+
+        function Naformatujcas(p)
+        {
+            let sekundy = p % 60;
+            let minuty = (p >= 60) ? (p-sekundy)/60 : 0;
+            let hodiny = (p >= 3600) ? (p-sekundy-minuty)/60 : 0;
+            return `${(hodiny < 10) ? "0"+hodiny : hodiny}:${(minuty < 10) ? "0"+minuty : minuty}:${(sekundy < 10) ? "0"+sekundy : sekundy}`
+        }
+    </script>
+</body>
+</html>
