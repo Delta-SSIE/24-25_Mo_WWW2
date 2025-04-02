@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timers</title>
+</head>
+<body>
+    <p id="cas"></p>
+    <button id="ahoj">Ahoj</button>
+    <button id="stop">STOP</button>
+    <button id="start">START</button>
+
+    <script>
+        let timeout;
+        let interval;
+
+        let txt = document.getElementById('cas');
+        let ahoj = document.getElementById('ahoj');
+        ahoj.addEventListener("click",Klik)
+
+        document.getElementById('stop').addEventListener('click', () => window.clearTimeout(timeout));   
+        document.getElementById('stop').addEventListener('click', () => window.clearInterval(interval));   
+
+        document.getElementById('start').addEventListener("click", () => interval = window.setInterval(Cas,1000));
+        
+        let pocitadlo = 0;
+        function Cas()
+        {
+            pocitadlo++;
+            //let datum = new Date();
+            txt.textContent = pocitadlo;
+        }
+
+        function Klik()
+        {
+            timeout = window.setTimeout(Ahoj,5000);
+        }
+       
+
+        function Ahoj()
+        {
+            txt.textContent += "Ahoj \n"
+        }
+    </script>
+</body>
+</html>
