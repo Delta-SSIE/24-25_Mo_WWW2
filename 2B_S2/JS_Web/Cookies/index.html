@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies</title>
+</head>
+<body>
+    
+    <script>
+        document.cookie = "id=5";
+        document.cookie = "pass=tajne";
+        document.cookie= "id=10";
+        let cookie = document.cookie;
+
+        let polecook = cookie.split(";");
+        console.log(polecook);
+        for (let index = 0; index < polecook.length; index++) {
+            let cookina = polecook[index].split('=');
+
+            console.log(`Název cookie: ${cookina[0]} a hodnota cookie: ${cookina[1]}`);
+            
+        }
+    </script>
+</body>
+</html>
