@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timers</title>
+</head>
+<body>
+    <p id="text"></p>
+    <p id="time"></p>
+    <button id="ahoj">Ahoj</button>
+    <button id="start">START</button>
+    <button id="stop">STOP</button>
+    <script>
+        let txt = document.getElementById('text');
+        let ahoj = document.getElementById('ahoj');
+        let time = document.getElementById('time');
+        let start = document.getElementById('start');
+        
+        start.addEventListener("click",Stopky);
+
+        let interval;
+
+        function Stopky()
+        {
+            interval = window.setInterval(Pocitej, 1000);
+        }
+
+        let pocitadlo = 0;
+        function Pocitej()
+        {
+            pocitadlo++;
+            //let date = new Date();
+            txt.textContent = pocitadlo;
+        }
+        document.getElementById('stop').addEventListener("click", () => window.clearInterval(interval));
+
+
+        let timeout;
+
+        ahoj.addEventListener("click",Klik);
+
+        
+
+        document.getElementById('stop').addEventListener("click", () => window.clearTimeout(timeout));
+        function Klik()
+        {
+            timeout = window.setTimeout(Ahoj,1000);
+        }
+
+        function Ahoj()
+        {
+            txt.textContent += "Ahoj \n";
+        }
+    </script>
+</body>
+</html>
