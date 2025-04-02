@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classlist</title>
+    <style>
+        .red {
+            color: red;
+            font-size: large;
+        }
+        .italic {
+            font-style: italic;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: justify;
+        }
+        .super {
+            background-color: blue;
+            border: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+    <p id="txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur ratione quia odio repellendus suscipit blanditiis aliquam pariatur, accusantium ipsum sapiente libero molestiae architecto quibusdam. Praesentium facere omnis totam molestiae rem.</p>
+    <div id="class">
+        <button>red</button>
+        <button>italic</button>
+        <button>super</button>
+    </div>
+    <button id="odeber">Odeber třídu</button>
+    <p id="vypis"></p>
+    <script>
+        let txt = document.getElementById('txt');
+        let btns = document.querySelectorAll('#class button');
+
+        for (let index = 0; index < btns.length; index++) {
+            btns[index].addEventListener("click", () => ChangeClass(btns[index].innerHTML))
+        }
+
+        function ChangeClass(nazev)
+        {
+            txt.classList.toggle(nazev);
+            console.log(txt.classList);
+        }
+
+        document.getElementById('odeber').addEventListener("click", () => txt.classList.remove(txt.classList[0]));
+
+
+
+    </script>
+</body>
+</html>
