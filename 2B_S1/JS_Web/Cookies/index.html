@@ -6,12 +6,49 @@
     <title>Cookies</title>
 </head>
 <body>
+    <input type="text" id="text">
+    <p id="vystup"></p>
+    <div id="newcookie">
+        <input type="text">
+        <input type="text">
+        <input type="button" value="Přidej/Uprav cookie">
+    </div>
     
     <script>
         document.cookie = "username=Ivan";
         document.cookie = "id=5";
         document.cookie = "id=8";
-        console.log(document.cookie);
+        document.cookie = "surname=Bartos";
+
+        let edit = document.querySelectorAll('#newcookie input');
+
+        edit[2].addEventListener("click", SetCookie);
+        
+        let txt = document.getElementById('text');
+        let vystup = document.getElementById('vystup');
+
+        txt.addEventListener("keydown", (e) => (e.key == "Enter") ? VypisCookie() : null);
+
+        function SetCookie()
+        {
+            document.cookie = `${edit[0].value}=${edit[1].value}`
+        }
+
+
+        function VypisCookie()
+        {
+            let cookies = document.cookie.split("; ");
+            console.log(cookies);
+            for (let index = 0; index < cookies.length; index++) {
+                let cookie = cookies[index].split('=');
+                if(txt.value == cookie[0]) //cookie na 0. je název cookie
+                    {
+                        vystup.innerHTML = cookie[1]; //cookie na 1. je hodnota
+                    }
+            }
+            
+        }
+
     </script>
 </body>
 </html>
