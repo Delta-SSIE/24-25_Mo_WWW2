@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON_simply</title>
+</head>
+<body>
+    
+    <script>
+        let text = `{"id":1,"first_name":"Abbe","last_name":"Dudbridge","email":"adudbridge0@infoseek.co.jp","gender":"Male","ip_address":"210.159.100.12"}`;
+
+        let objekt = JSON.parse(text);
+        console.log(objekt);
+
+        objekt.id = 10;
+        objekt.email = "Neco@neco.cz";
+        console.log(objekt);
+
+        text = JSON.stringify(objekt);
+        console.log(text);
+
+        window.localStorage.setItem("0",text);
+
+    </script>
+</body>
+</html>

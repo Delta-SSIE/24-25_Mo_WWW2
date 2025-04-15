@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickBakery</title>
+    <style>
+        #chleba {
+            width: 100px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <input id="chleba" type="image" src="chleba.jpg" />
+    <p id="counter"></p>
+    <button disabled id="bakery">Pekárna</button>
+    <button>Minutové pečení</button>
+    <div id="bakeryarea">
+    </div>
+
+    <script>
+        let counter = document.getElementById('counter');
+        let img = document.getElementById('chleba');
+        let pekarna = document.getElementById('bakery');
+        let area = document.getElementById('bakeryarea');
+
+        img.addEventListener("click", PectChleba);
+        pekarna.addEventListener("click",VytvorPekarnu);
+
+        function VytvorPekarnu()
+        {
+            let nova_pek = document.createElement('img');
+            nova_pek.src = "bakery.png";
+            nova_pek.style.width = "100px";
+            area.appendChild(nova_pek);
+            let pocet = parseInt(window.localStorage.getItem('pocet_pek'));
+            window.localStorage.setItem("pocet_pek",`${pocet+1}`);
+        }
+
+        function PectChleba()
+        {
+            chleba.disabled = "disabled";
+            window.setTimeout(PridejChleba,1000);
+        }
+
+        function PridejChleba()
+        {
+            let pocitadlo = parseInt(window.localStorage.getItem('chleba'));
+            pocitadlo++;
+            window.localStorage.setItem("chleba",pocitadlo);
+            counter.innerHTML = window.localStorage.getItem('chleba');
+            chleba.disabled = null;
+            if(pocitadlo > 9)
+            {
+                pekarna.disabled = null;
+            }
+        }
+        
+
+        function NacistData()
+        {
+            if(window.localStorage.getItem('chleba'))
+            {
+                counter.innerHTML = window.localStorage.getItem('chleba');
+            } else {
+                window.localStorage.setItem("chleba","0");
+                counter.innerHTML = window.localStorage.getItem('chleba');
+            }
+            if(window.localStorage.getItem('pocet_pek'))
+            {
+                let pocet = parseInt(window.localStorage.getItem('pocet_pek'));
+                for (let index = 0; index < pocet; index++) {
+                    VytvorPekarnu();
+                }
+            } else {
+                window.localStorage.setItem("pocet_pek","0");
+            }
+        }
+        NacistData();
+    </script>
+</body>
+</html>
