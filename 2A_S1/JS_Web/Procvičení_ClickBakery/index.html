@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickBakery</title>
+    <style>
+        #chleba {
+            width: 100px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <input id="chleba" type="image" src="chleba.jpg" />
+    <p id="count"></p>
+    <button>Pekárna</button>
+    <button>Minutové pečení</button>
+    <div id="bakeryarea">
+    </div>
+
+    <script>
+        let vypispocet = document.getElementById('count');
+        let chlebaimg = document.getElementById('chleba');
+        Vypis();
+
+        chlebaimg.addEventListener("click", UpecChleba);
+
+        function UpecChleba()
+        {
+            chlebaimg.disabled = "disabled";
+            window.setTimeout(PridejChleba,1000);
+        }
+
+        function PridejChleba() 
+        {
+           let pocetchleba =  parseInt(window.localStorage.getItem('ch'));
+           pocetchleba++;
+           window.localStorage.setItem('ch',pocetchleba);
+           chlebaimg.disabled = null;
+           vypispocet.innerHTML = window.localStorage.getItem('ch');
+        }
+
+
+        function Vypis()
+        {
+            if(window.localStorage.getItem('ch') != null)
+            {
+                vypispocet.innerHTML = window.localStorage.getItem('ch');
+            } else {
+                window.localStorage.setItem('ch',"0");
+                vypispocet.innerHTML = window.localStorage.getItem('ch');
+            }
+        }
+    </script>
+</body>
+</html>
