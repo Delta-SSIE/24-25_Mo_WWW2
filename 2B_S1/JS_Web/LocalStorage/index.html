@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage</title>
+</head>
+<body>
+    <input type="text" id="text">
+    <p id="vystup"></p>
+    <div id="newentrie">
+        <input type="text">
+        <input type="text">
+        <input type="button" value="Přidej/Uprav entrie">
+    </div>
+    
+    
+    <script>
+        window.localStorage.setItem("name","John");
+        window.localStorage.setItem("id","5");
+
+        console.log(window.localStorage.getItem("id"));
+
+        let edit = document.querySelectorAll('#newentrie input');
+
+        edit[2].addEventListener("click", SetEntrie);
+        
+        let txt = document.getElementById('text');
+        let vystup = document.getElementById('vystup');
+
+        txt.addEventListener("keydown", (e) => (e.key == "Enter") ? VypisEntrie() : null);
+
+        function SetEntrie()
+        {
+            window.localStorage.setItem(edit[0].value,edit[1].value)
+        }
+
+        function VypisEntrie()
+        {
+            vystup.innerHTML = window.localStorage.getItem(txt.value);
+        }
+    </script>
+</body>
+</html>
