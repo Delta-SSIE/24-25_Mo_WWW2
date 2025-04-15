@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LS</title>
+</head>
+<body>
+    <input type="text" name="" id="name">
+    <p id="id"></p>
+    <script>
+        let text = document.getElementById('name')
+
+        text.addEventListener("keydown", (e) => (e.key == "Enter") ? VypisItem() : null)
+        window.localStorage.setItem("name","John");
+        window.localStorage.setItem("id","100");
+    
+        function VypisItem()
+        {
+            document.getElementById('id').innerHTML = window.localStorage.getItem(text.value);
+        }
+    </script>
+</body>
+</html>
