@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Json</title>
+</head>
+<body>
+    
+    <script>
+        let objekt = {
+            name: "John",
+            surname: "Gordon",
+            age: 12
+        }
+
+        let jstring = JSON.stringify(objekt)
+        console.log(jstring);
+
+        let objektA = JSON.parse(jstring);
+        console.log(objektA);
+
+        window.localStorage.setItem("0",jstring);
+
+        let objektB = window.localStorage.getItem("0");
+        console.log(objektB);
+        console.log(JSON.parse(objektB));
+    </script>
+</body>
+</html>
