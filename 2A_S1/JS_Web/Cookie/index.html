@@ -5,50 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cookie</title>
 </head>
-<body>
-    <h3>Načti cookie</h3>
-    <input type="text" id="name">
-    <p id="cookie"></p>
-    <h3>Přidej Cookie</h3>
-    <input type="text" id="cname">
-    <input type="text" id="cvalue">
-    <button id="set">Set cookie</button>
+<body> 
+    <input type="text" id="find">
+    <p id="vystup"></p>
+    <div id="edit">
+        <input type="text">
+        <input type="text">
+        <input type="button" value="Přepiš/Zapiš">
+    </div>
     
     <script>
-        let input = document.getElementById('name');
-        let text = document.getElementById('cookie');
-        let inputcn = document.getElementById('cname');
-        let inputcv = document.getElementById('cvalue');
-        let set = document.getElementById('set');
+        document.cookie = "id=5"; 
+        document.cookie = "name=John";
+        document.cookie = "id=10";
+        document.cookie = "surname=Fisher";
+        console.log(document.cookie);
 
-        set.addEventListener("click", Setcookie)
+        let edit = document.querySelectorAll('#edit input');
+        let txt = document.getElementById('find');
+        let vystup = document.getElementById('vystup');
 
-        input.addEventListener("keydown",(e) => (e.key == "Enter") ? Getcookie() : null);
+        txt.addEventListener("keydown", (e) => (e.key == "Enter") ? Vypis() : null);
+        edit[2].addEventListener("click",Set);
 
-        function Setcookie()
+        function Set()
         {
-            document.cookie = `${inputcn.value}=${inputcv.value}`;
+            document.cookie = `${edit[0].value}=${edit[1].value}`;
         }
 
-        function Getcookie()
+        function Vypis()
         {
-            let cookies = document.cookie.split("; ");
+            let cookies = document.cookie.split('; ');
             console.log(cookies);
             for (let index = 0; index < cookies.length; index++) {
-                let cookie = cookies[index].split("=");
+                let cookie = cookies[index].split('=');
                 console.log(cookie);
-                if(cookie[0] == input.value)
+                if(txt.value == cookie[0])
                 {
-                    text.innerHTML = cookie[1];
+                    vystup.textContent = cookie[1];
                 }
+                
             }
-
         }
-
-        document.cookie = "id=100";
-        document.cookie = "name=John";
-        document.cookie = "name=Jacob";
-        console.log(document.cookie);
     </script>
 </body>
 </html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickBakery</title>
+    <style>
+        #chleba {
+            width: 100px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <input id="chleba" type="image" src="chleba.jpg" />
+    <p id="pocet">0</p>
+    <button id="bakery">Pekárna</button>
+    <button>Minutové pečení</button>
+    <div id="bakeryarea">
+    </div>
+
+    <script>
+        let pocet = document.getElementById('pocet');
+        let chlebak = document.getElementById('chleba');
+        let btnbakery = document.getElementById('bakery');
+        let areabak = document.getElementById('bakeryarea');
+
+        let chleba = 0;
+        let pocetpek = 0;
+        let intervaly = [];
+
+        NactiHodnoty();
+
+        btnbakery.addEventListener("click",NovaPek);
+        chlebak.addEventListener("click",PecChleba);
+
+        function NovaPek()
+        {
+            pocetpek++;
+            window.localStorage.setItem("bakery",pocetpek);
+            VykresliPekarny();
+        }
+
+        function VykresliPekarny()
+        {
+            for (let index = 0; index < intervaly.length; index++) {
+                window.clearInterval(intervaly[index]);
+            }
+            intervaly = [];
+
+            areabak.innerHTML = "";
+            for (let index = 0; index < pocetpek; index++) {
+                console.log(pocetpek);
+                let img = document.createElement('img');
+                img.style.width = "100px";
+                img.src = "bakery.png";
+                let interval = window.setInterval(() => PekarnaPece(img),10000);
+                intervaly.push(interval);
+                areabak.appendChild(img);
+            }
+        }
+
+        function PekarnaPece(bakery)
+        {
+            bakery.style.border = "5px solid red";
+            Chleba();
+            window.setTimeout(() => bakery.style.border = "",1000);
+        }
+
+        function PecChleba()
+        {
+            chlebak.disabled = "disabled";
+            window.setTimeout(Chleba,1000);
+            chlebak.style.border = "3px solid red";
+        }
+
+        function Chleba()
+        {
+            chleba++;
+            window.localStorage.setItem('ch',chleba);
+            pocet.textContent = chleba;
+            chlebak.style.border = "";
+            chlebak.disabled = null;
+        }
+        
+        function NactiHodnoty()
+        {
+            if(window.localStorage.getItem('ch'))
+            {
+                chleba = parseInt(window.localStorage.getItem('ch'));   
+
+            } else {
+                window.localStorage.setItem('ch',"0");
+                chleba = 0;
+            }
+            if(window.localStorage.getItem('bakery'))
+            {
+                pocetpek = parseInt(window.localStorage.getItem('bakery'));   
+
+            } else {
+                window.localStorage.setItem('bakery',"0");
+                pocetpek = 0;
+            }
+            pocet.textContent = chleba;
+            VykresliPekarny();
+        }
+    </script>
+</body>
+</html>

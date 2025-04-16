@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie</title>
+</head>
+<body>
+    <h3>Načti cookie</h3>
+    <input type="text" id="name">
+    <p id="cookie"></p>
+    <h3>Přidej Cookie</h3>
+    <input type="text" id="cname">
+    <input type="text" id="cvalue">
+    <button id="set">Set cookie</button>
+    
+    <script>
+        let input = document.getElementById('name');
+        let text = document.getElementById('cookie');
+        let inputcn = document.getElementById('cname');
+        let inputcv = document.getElementById('cvalue');
+        let set = document.getElementById('set');
+
+        set.addEventListener("click", Setcookie)
+
+        input.addEventListener("keydown",(e) => (e.key == "Enter") ? Getcookie() : null);
+
+        function Setcookie()
+        {
+            document.cookie = `${inputcn.value}=${inputcv.value}`;
+        }
+
+        function Getcookie()
+        {
+            let cookies = document.cookie.split("; ");
+            console.log(cookies);
+            for (let index = 0; index < cookies.length; index++) {
+                let cookie = cookies[index].split("=");
+                console.log(cookie);
+                if(cookie[0] == input.value)
+                {
+                    text.innerHTML = cookie[1];
+                }
+            }
+
+        }
+
+        document.cookie = "id=100";
+        document.cookie = "name=John";
+        document.cookie = "name=Jacob";
+        console.log(document.cookie);
+    </script>
+</body>
+</html>

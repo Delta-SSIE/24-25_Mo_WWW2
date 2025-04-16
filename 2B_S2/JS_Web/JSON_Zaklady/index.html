@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON_basics</title>
+</head>
+<body>
+    <script>
+        let json_string =`{"id":1,"first_name":"Bobine","last_name":"Harrema","email":"bharrema0@jalbum.net","ip_address":"169.204.80.81"}`;
+        console.log(json_string);
+
+        let objekt = JSON.parse(json_string);
+        console.log(objekt);
+        console.log(objekt.id);
+        objekt.first_name = "John";
+
+        let newstring = JSON.stringify(objekt);
+        console.log(newstring);
+    </script>
+</body>
+</html>
