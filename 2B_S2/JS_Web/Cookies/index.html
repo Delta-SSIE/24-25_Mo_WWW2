@@ -6,12 +6,23 @@
     <title>Cookies</title>
 </head>
 <body>
+    <input type="text" id="find">
+    <p id="vypis"></p>
+    <div id="editzone">
+        <input type="text">
+        <input type="text">
+        <input type="button" value="Založ/Přepiš">
+    </div>
+    <select name="" id="cookie_nabidka"></select>
     
     <script>
         document.cookie = "id=5";
         document.cookie = "pass=tajne";
-        document.cookie= "id=10";
+        document.cookie = "id=10";
+        document.cookie = "name=John";
         let cookie = document.cookie;
+
+        console.log(document.cookie);
 
         let polecook = cookie.split(";");
         console.log(polecook);
@@ -21,6 +32,50 @@
             console.log(`Název cookie: ${cookina[0]} a hodnota cookie: ${cookina[1]}`);
             
         }
+
+        let text = document.getElementById('find');
+        let vypis = document.getElementById('vypis');
+
+        text.addEventListener("keydown",(e) => (e.key == "Enter") ? Get() : null);
+
+        function Get()
+        {
+            let pole_cookie = document.cookie.split("; ");
+            console.log(pole_cookie);
+            for (let index = 0; index < pole_cookie.length; index++) {
+                let cookie = pole_cookie[index].split("=");
+                console.log(cookie);
+                if(text.value == cookie[0])
+                {
+                    vypis.innerHTML = cookie[1];
+                }
+                
+            }
+
+        }
+
+        let edit = document.querySelectorAll('#editzone input');
+        console.log(edit);
+
+        edit[2].addEventListener("click",Set);
+
+        function Set()
+        {
+            document.cookie = `${edit[0].value}=${edit[1].value}`;
+        }
+
+        let nabidka = document.getElementById('cookie_nabidka');
+        let pole_cookie = document.cookie.split("; ");
+            for (let index = 0; index < pole_cookie.length; index++) {
+                let cookie = pole_cookie[index].split("=");
+                let option = document.createElement('option');
+                option.value = cookie[0];
+                option.innerHTML = cookie[0];
+                nabidka.appendChild(option);
+            }
+    
+
+
     </script>
 </body>
 </html>

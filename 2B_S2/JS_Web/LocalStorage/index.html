@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage</title>
+</head>
+<body>
+    <input type="text" id="find">
+    <p id="vypis"></p>
+    <div id="editzone">
+        <input type="text">
+        <input type="text">
+        <input type="button" value="Založ/Přepiš">
+    </div>
+    
+    <script>
+        window.localStorage.setItem("id","10");
+        window.localStorage.setItem("name","John");
+        window.localStorage.setItem("id","500");
+
+        console.log(window.localStorage.getItem("id"));
+
+        let text = document.getElementById('find');
+        let vypis = document.getElementById('vypis');
+
+        text.addEventListener("keydown",(e) => (e.key == "Enter") ? Get() : null);
+
+        function Get()
+        {
+            vypis.innerHTML = window.localStorage.getItem(text.value);
+        }
+
+        let edit = document.querySelectorAll('#editzone input');
+        console.log(edit);
+
+        edit[2].addEventListener("click",Set);
+
+        function Set()
+        {
+            window.localStorage.setItem(edit[0].value,edit[1].value);
+        }
+
+    </script>
+</body>
+</html>
