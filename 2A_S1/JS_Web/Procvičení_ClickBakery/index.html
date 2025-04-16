@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickBakery</title>
+    <style>
+        #chleba {
+            width: 100px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <input id="chleba" type="image" src="chleba.jpg" />
+    <p id="counter">0</p>
+    <button>Pekárna</button>
+    <button>Minutové pečení</button>
+    <div id="bakeryarea">
+    </div>
+
+    <script>
+        let counter = document.getElementById('counter');
+        let pocet_chleba = 0;
+        let chleba = document.getElementById('chleba');
+
+        NacistData();
+        chleba.addEventListener("click",PecChleba)
+
+        function PecChleba()
+        {
+            chleba.disabled = "disabled";
+            chleba.style.border = "3px solid red";
+            window.setTimeout(Chleba,1000);
+        }
+
+        function Chleba()
+        {
+            pocet_chleba++;
+            window.localStorage.setItem("chleba",pocet_chleba);
+            chleba.style.border = null;
+            chleba.disabled = null;
+            counter.textContent = pocet_chleba;
+
+        }
+
+        function NacistData() {
+            if(window.localStorage.getItem("chleba"))
+            {
+                pocet_chleba = window.localStorage.getItem("chleba");
+            } else 
+            {
+                window.localStorage.setItem("chleba",pocet_chleba);
+            }
+            counter.textContent = pocet_chleba;
+        }
+    </script>
+</body>
+</html>
