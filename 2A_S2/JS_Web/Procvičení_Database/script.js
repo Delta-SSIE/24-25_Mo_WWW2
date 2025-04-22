@@ -52,7 +52,10 @@ const json = `[{"id":1,"first_name":"Westbrooke","last_name":"Macilhench","email
     let nactenibtn = document.getElementById('nacist');
     let input = document.getElementById('id');
     let useroutput = document.getElementById('user');
+    let editinputs = document.querySelectorAll('#editarea input');
+    let editbtn = document.getElementById('edit');
 
+    edit.addEventListener("click",PrepisZaznam);
     nactenibtn.addEventListener("click",Nactidata);
     input.addEventListener("change",NactiZaznamy);
 
@@ -67,7 +70,27 @@ const json = `[{"id":1,"first_name":"Westbrooke","last_name":"Macilhench","email
             {
                 useroutput.textContent += `${zaznam[0]}: ${zaznam[1]} `;
             }
+            useroutput.addEventListener("click", () => Edit(user));
         }
+    }
+
+    function Edit(user)
+    {
+        for (let index = 0; index < editinputs.length; index++) {
+            editinputs[index].value = Object.values(user)[index+1];
+        }
+    }
+
+    function PrepisZaznam()
+    {
+        let objekt = {
+            id: input.value,
+            first_name: editinputs[0].value,
+            last_name: editinputs[1].value,
+            email: editinputs[2].value,
+            ip_address: editinputs[3].value
+        };
+        window.localStorage.setItem(objekt.id,JSON.stringify(objekt));
     }
 
     function Nactidata()
