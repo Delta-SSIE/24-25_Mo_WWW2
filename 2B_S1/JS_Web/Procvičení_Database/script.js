@@ -49,15 +49,66 @@ const json = `[{"id":1,"first_name":"Westbrooke","last_name":"Macilhench","email
     {"id":49,"first_name":"Chaddy","last_name":"Ripsher","email":"cripsher1c@parallels.com","ip_address":"233.88.167.8"},
     {"id":50,"first_name":"Taryn","last_name":"Shipton","email":"tshipton1d@instagram.com","ip_address":"101.128.238.37"}]`;
 
-let pole_objektu = JSON.parse(json);
-console.log(pole_objektu);
+document.getElementById('nacist').addEventListener("click", nactidata);
+let input = document.getElementById('id');
+let user = document.getElementById('user');
+let editinputs = document.querySelectorAll('#editarea input');
+let editbtn = document.getElementById('edit');
+let editid;
 
-pole_objektu.forEach((objekt) => {
-    window.localStorage.setItem(objekt.id, JSON.stringify(objekt));
-});
+editbtn.addEventListener("click",editzaznam);
+input.addEventListener("keyup",nactizaznam);
 
-let objektA = window.localStorage.getItem("1");
-console.log(JSON.parse(objektA));
+function editzaznam()
+{
+    let edituser = {
+        id: editid,
+        first_name: editinputs[0].value,
+        last_name: editinputs[1].value,
+        email: editinputs[2].value,
+        ip_adress: editinputs[3].value
+    }
+    for (let index = 0; index < editinputs.length; index++) {
+        editinputs[index].value = "";
+    }
+    window.localStorage.setItem(editid,JSON.stringify(edituser));
+    editid = null;
+    user.textContent = "";
+}
+
+function nactizaznam()
+{
+    if(window.localStorage.getItem(input.value))
+    {
+        //console.log(window.localStorage.getItem(input.value));
+        let zaznam = JSON.parse(window.localStorage.getItem(input.value));
+        //console.log(zaznam);
+        user.textContent = `${zaznam.id}: ${zaznam.first_name} ${zaznam.last_name}`;
+        user.addEventListener("click", () => nactiedit(zaznam))
+    } else {
+        user.textContent = "";
+    }
+}
+
+function nactiedit(zaznam)
+{
+    for (let index = 0; index < editinputs.length; index++) {
+        editinputs[index].value = Object.values(zaznam)[index+1];
+    }
+    editid = zaznam.id;
+}
+
+
+function nactidata()
+{
+    window.localStorage.clear();
+    let pole_objektu = JSON.parse(json);
+    pole_objektu.forEach((objekt) => {
+        window.localStorage.setItem(objekt.id, JSON.stringify(objekt));
+    });
+    
+}
+
 
 
 
