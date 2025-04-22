@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random_dog</title>
+</head>
+<body>
+    <button id="btn">Najdi psa</button>
+    <input type="text" id="breed">
+    <div id="imgarea">
+
+    </div>
+    <script>
+        let btn = document.getElementById('btn');
+        let area = document.getElementById('imgarea');
+        let breed = document.getElementById('breed');
+
+        btn.addEventListener("click",Image);
+
+        async function Image() {
+            fetch(`https://dog.ceo/api/breed/${breed.value}/images`).then(
+                function(response)
+                {
+                    return response.json()
+                }
+            ).then(
+                function(dog)
+                {
+                    area.innerHTML = "";
+                    let obrazek = document.createElement('img');
+                    obrazek.src = dog.message[0];
+                    area.appendChild(obrazek);
+                }
+            )
+        }
+
+    </script>
+</body>
+</html>
