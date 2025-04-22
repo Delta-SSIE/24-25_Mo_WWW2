@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API</title>
+</head>
+<body>
+    <p id="fact"></p>
+    <script>
+       let txt = document.getElementById('fact');
+
+        fetch("https://catfact.ninja/fact").then(
+            function(response)
+            {
+                return response.json()
+            }
+        ).then(
+            function(fact)
+            {
+                txt.textContent = fact.fact;
+            }
+        )
+
+       
+       //Getdata();
+    
+       //async funkce
+        async function Getdata() {
+            let response = await fetch("https://catfact.ninja/fact");
+            let json = await response.json();
+            console.log(response);
+            console.log(json);
+            txt.textContent = json.fact;
+        }
+
+        
+    </script>
+</body>
+</html>
