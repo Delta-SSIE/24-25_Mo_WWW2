@@ -28,10 +28,36 @@
         input2.addEventListener("change",showbreed)
 
         //načtení psů do selectu
+        fetch("https://dog.ceo/api/breeds/list/all").then(
+            (response) => response.json()
+        ).then(
+            function(dog)
+            {
+                for(let breed in dog.message)
+                {
+                    let option = document.createElement('option');
+                    option.value = breed;
+                    option.textContent = breed;
+                    input2.appendChild(option);
+                }
+            }
+        )
 
         //vykreslení psů vybraných v selectu
         async function showbreed() {
-            
+            let plemeno = input2.value;
+            fetch(`https://dog.ceo/api/breed/${plemeno}/images`).then(
+                (response) => {return response.json()}
+            ).then(
+                (dogs) => {
+                    barea.innerHTML = null;
+                    let nahodne =  Math.floor(Math.random() * dogs.message.length); 
+                    let img = document.createElement('img');
+                    img.src = dogs.message[nahodne];
+                    img.width = "100";
+                    barea.appendChild(img);  
+                }
+            )
         }
 
 
