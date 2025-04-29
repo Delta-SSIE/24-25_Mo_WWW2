@@ -7,19 +7,36 @@
 </head>
 <body>
     <button id="btn">Najdi psa</button>
-    <input type="text" id="breed">
+    <select name="" id="breed"></select>
     <div id="imgarea">
 
     </div>
     <script>
         let btn = document.getElementById('btn');
         let area = document.getElementById('imgarea');
-        let breed = document.getElementById('breed');
+        let input = document.getElementById('breed');
+
+        fetch(" https://dog.ceo/api/breeds/list/all").then(
+            (response) => response.json()
+        ).then(
+            function(list)
+            {
+                for(let breed in list.message)
+                {
+                    let option = document.createElement('option');
+                    option.textContent = breed;
+                    option.value = breed;
+                    input.appendChild(option);
+                }
+                
+
+            }
+        )
 
         btn.addEventListener("click",Image);
 
         async function Image() {
-            fetch(`https://dog.ceo/api/breed/${breed.value}/images`).then(
+            fetch(`https://dog.ceo/api/breed/${input.value}/images`).then(
                 function(response)
                 {
                     return response.json()
