@@ -29,7 +29,7 @@
                 {
                     area.innerHTML = "";
                     let obrazek = document.createElement('img');
-                    obrazek.src = dog.message[0];
+                    obrazek.src = dog.message[Math.floor(Math.random() * dog.message.length)];
                     area.appendChild(obrazek);
                 }
             )
