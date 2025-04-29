@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YT_API</title>
+</head>
+<body>
+    
+    <script>
+        fetch('https://youtube.googleapis.com/youtube/v3/search?key=AIzaSyASC3ljLC6iaXghCazUxownMBX1B0Q_FmI&part=snippet&q=zeman').then(
+            function(response)
+            {
+                return response.json()
+            }
+        ).then(
+            function(list)
+            {
+                console.log(list);
+            }
+        )
+    </script>
+</body>
+</html>
