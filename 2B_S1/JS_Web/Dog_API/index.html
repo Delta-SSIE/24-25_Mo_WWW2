@@ -17,11 +17,22 @@
         let area = document.getElementById('dogarea');
         let input = document.getElementById('breed');
         let barea = document.getElementById('breedarea');
+        let barea2 = document.getElementById('breedarea');
+        let input2 = document.getElementById('selectbreed');
 
         btn.addEventListener("click",getdog);
 
         input.addEventListener("keypress", (e) => (e.key == "Enter") ? getrandombreed() : null);
         input.addEventListener("keypress", (e) => (e.key == "e") ? getbreeds() : null);
+
+        input2.addEventListener("change",showbreed)
+
+        //načtení psů do selectu
+
+        //vykreslení psů vybraných v selectu
+        async function showbreed() {
+            
+        }
 
 
         async function getrandombreed() {
