@@ -7,12 +7,69 @@
 </head>
 <body>
     <button id="randomdog">Random dog</button>
+    <input type="text" name="" id="textbreed">
+    <select name="" id="breedselection"></select>
+    <button id="selecteddog">Random dog from selected breed</button>
     <div id="randomdogarea"></div>
     <script>
         let btn = document.getElementById('randomdog');
+        let inputtxt = document.getElementById('textbreed');
+        let select = document.getElementById('breedselection');
+        let btnsel = document.getElementById('selecteddog');
         let area = document.getElementById('randomdogarea');
 
+        btnsel.addEventListener("click", GetSelectedDog);
         btn.addEventListener("click",GetRandomDog);
+        inputtxt.addEventListener("keydown", (e) => (e.key == "Enter") ? GetBreedDog() : null);
+
+        fetch('https://dog.ceo/api/breeds/list/all').then(
+            (response) => response.json()
+        ).then(
+            function(list)
+            {
+                //for(let breed of Object.keys(list.message))
+                for(let breed in list.message)
+                {
+                    let option = document.createElement('option');
+                    option.value = breed;
+                    option.textContent = breed;
+                    select.appendChild(option);
+                }
+            }
+        )
+
+
+        function GetSelectedDog()
+        {
+            fetch(`https://dog.ceo/api/breed/${select.value}/images`).then(
+                (r) => r.json()
+            ).then(
+                function(dog)
+                {
+                    console.log(dog);
+                    let img = document.createElement('img');
+                    img.src = dog.message[Math.floor(Math.random() * dog.message.length)];
+                    img.style.width = "100px";
+                    area.appendChild(img);
+                }
+            )
+        }
+
+        function GetBreedDog()
+        {
+            fetch(`https://dog.ceo/api/breed/${inputtxt.value}/images`).then(
+                (r) => r.json()
+            ).then(
+                function(dog)
+                {
+                    console.log(dog);
+                    let img = document.createElement('img');
+                    img.src = dog.message[Math.floor(Math.random() * dog.message.length)];
+                    img.style.width = "100px";
+                    area.appendChild(img);
+                }
+            )
+        }
 
         //Random dog async function
         async function GetRandomDog() {
