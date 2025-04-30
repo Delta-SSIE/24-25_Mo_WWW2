@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api_req</title>
+</head>
+<body>
+
+    <script>
+        //Novyzarizeni();
+        Upravzarizeni();
+
+        async function Upravzarizeni() {
+            const reponse = await fetch('https://api.restful-api.dev/objects/ff808181932badb601968654f549159c',
+            {
+                method: 'PUT',
+                headers: {
+                     'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: "Delta book mega",
+                    data: {
+                        year: 2030,
+                        message: "MEGA"
+                    }
+                })
+            });
+            const content = await reponse.json();
+            console.log(content);
+            }
+        
+        async function Novyzarizeni() {
+            const reponse = await fetch('https://api.restful-api.dev/objects',
+            {
+                method: 'POST',
+                headers: {
+                     'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: "Delta book",
+                    data: {
+                        year: 2025,
+                        message: "tadaaaa"
+                    }
+                })
+            });
+            const content = await reponse.json();
+            console.log(content);
+            }
+        
+    </script>
+</body>
+</html>
