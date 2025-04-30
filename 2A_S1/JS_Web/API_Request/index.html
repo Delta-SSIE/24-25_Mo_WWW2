@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API_Request</title>
+</head>
+<body>
+    
+    
+    <script>
+        //PostItem();
+        let id = "ff808181932badb6019686d636e817ac";
+        //PutItem(id);
+        PatchItem(id);
+
+        async function PatchItem(id) {
+            let response = await fetch(`https://api.restful-api.dev/objects/${id}`,{
+                method: "PATCH",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    data: {
+                        year: 2025                
+                    }
+                })
+            });
+
+            let json = await response.json();
+            console.log(json);
+        }
+
+
+        async function PutItem(id) {
+            let response = await fetch(`https://api.restful-api.dev/objects/${id}`,{
+                method: "PUT",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: "mega_super_pc",
+                    data: {
+                        year: 2020                    }
+                })
+            });
+
+            let json = await response.json();
+            console.log(json);
+        }
+
+        async function PostItem() {
+            let response = await fetch('https://api.restful-api.dev/objects',{
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: "super_pc_v1",
+                    data: {
+                        year: 2015,
+                        price: 2.2
+                    }
+                })
+            });
+
+            let json = await response.json();
+            console.log(json);
+        }
+    </script>
+</body>
+</html>
