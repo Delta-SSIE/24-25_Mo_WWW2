@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog_API</title>
+</head>
+<body>
+    <button id="randomdog">Random dog</button>
+    <div id="randomdogarea"></div>
+    <script>
+        let btn = document.getElementById('randomdog');
+        let area = document.getElementById('randomdogarea');
+
+        btn.addEventListener("click",GetRandomDog);
+
+        //Random dog async function
+        async function GetRandomDog() {
+            let response = await fetch('https://dog.ceo/api/breeds/image/random');
+            let dog = await response.json();
+            let img = document.createElement('img');
+            img.src = dog.message;
+            img.style.width = "100px";
+           area.appendChild(img);
+        }
+
+        //Random dog fetch then
+        function DogRandom() {
+            fetch('https://dog.ceo/api/breeds/image/random').then(
+                (r) => r.json()
+            ).then(
+                function(dog)
+                {
+                    console.log(dog);
+                    let img = document.createElement('img');
+                    img.src = dog.message;
+                    img.style.width = "100px";
+                    area.appendChild(img);
+                }
+            )
+        }
+    </script>
+</body>
+</html>
