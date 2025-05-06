@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API_Request</title>
+</head>
+<body>
+    
+    <script>
+        //PostData();
+
+        PatchData();
+
+        async function PatchData() {
+            let response = await fetch("https://api.restful-api.dev/objects/ff808181932badb60196a587a6424467",{
+                method: "PATCH",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: "DeltaSuperBook",
+                   
+                })
+            })
+
+            console.log(response);
+            let json = await response.json();
+            console.log(json);
+        }
+
+        async function PostData() {
+            let response = await fetch("https://api.restful-api.dev/objects",{
+                method: "Post",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: "SuperBook",
+                    data: {
+                        price: 200,
+                        year: 2025
+                    }
+                })
+            })
+
+            console.log(response);
+            let json = await response.json();
+            console.log(json);
+        }
+    </script>
+</body>
+</html>
