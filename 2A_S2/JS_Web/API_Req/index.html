@@ -6,8 +6,77 @@
     <title>Api_Req</title>
 </head>
 <body>
+    <input type="text" id="name">
+    <input type="text" id="data">
+    <button id="btnpost">Přidej</button>
+    <select name="" id="selection"></select>
+    <button>Uprav</button>
+    <button id="editbtn">Potvrzení úprav</button>
+    <button>Smaž</button>
     
     <script>
+        let inputname = document.getElementById('name');
+        let inputdata = document.getElementById('data');
+        let posttbn = document.getElementById('btnpost');
+        let select = document.getElementById('selection');
+        let putbtn = document.getElementById('editbtn');
+
+        posttbn.addEventListener("click",PostData);
+        select.addEventListener("change", Editdata);
+        putbtn.addEventListener("click",PutData)
+
+        function Editdata()
+        {
+            fetch(`https://api.restful-api.dev/objects/${select.value}`).then(
+                (res) => res.json()
+            ).then(
+                function(data)
+                {
+                    inputname.value = data.name;
+                    inputdata.value = `price=${data.data.price}`;
+                }
+            )
+        }
+
+        NactiSelect();
+
+        function NactiSelect()
+        {
+            if(window.localStorage.getItem('id'))
+            {
+                let data = window.localStorage.getItem('id').split(';');
+                for (let index = 0; index < data.length; index++) {
+                    let option = document.createElement('option');
+                    option.value = data[index];
+                    option.textContent = data[index];
+                    select.appendChild(option);
+                }
+            }
+        }
+
+
+        async function PutData() {
+            let poleobjekt = inputdata.value.split('=');
+
+            let response = await fetch(`https://api.restful-api.dev/objects/${select.value}`,
+            {
+                method: "PUT",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(
+                    {  
+                        name: inputname.value,
+                        data: {
+                            [poleobjekt[0]]: parseInt(poleobjekt[1])
+                        }
+                    }
+                )
+            });
+        }
+
+
         //PostData();
         //PatchData();
 
@@ -35,6 +104,8 @@
         }
 
         async function PostData() {
+            let poleobjekt = inputdata.value.split('=');
+
             let response = await fetch("https://api.restful-api.dev/objects",
             {
                 method: "POST",
@@ -44,11 +115,9 @@
                 },
                 body: JSON.stringify(
                     {
-                        name: "Pc delta v3",
+                        name: inputname.value,
                         data: {
-                            price: 250,
-                            year: 2025,
-                            color: "black"
+                            [poleobjekt[0]]: parseInt(poleobjekt[1])
                         }
                     }
                 )
@@ -57,6 +126,8 @@
             console.log(response);
             let json = await response.json();
             console.log(json);
+            window.localStorage.setItem("id",(window.localStorage.getItem('id')) ? window.localStorage.getItem('id') +";"+ json.id : json.id);
+            NactiSelect();
         }
     </script>
 </body>
