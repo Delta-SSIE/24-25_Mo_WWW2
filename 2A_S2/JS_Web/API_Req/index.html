@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api_Req</title>
+</head>
+<body>
+    
+    <script>
+        //PostData();
+        //PatchData();
+
+        async function PatchData() {
+            let response = await fetch("https://api.restful-api.dev/objects/ff808181932badb60196a46cec433f0e",
+            {
+                method: "PATCH",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(
+                    {
+                        data: {
+                            price: 5000,
+                            color: "orange"
+                        }
+                    }
+                )
+            });
+
+            console.log(response);
+            let json = await response.json();
+            console.log(json);
+        }
+
+        async function PostData() {
+            let response = await fetch("https://api.restful-api.dev/objects",
+            {
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(
+                    {
+                        name: "Pc delta v3",
+                        data: {
+                            price: 250,
+                            year: 2025,
+                            color: "black"
+                        }
+                    }
+                )
+            });
+
+            console.log(response);
+            let json = await response.json();
+            console.log(json);
+        }
+    </script>
+</body>
+</html>
