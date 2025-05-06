@@ -7,21 +7,87 @@
 </head>
 <body>
     
+    <input type="text" id="name">
+    <input type="text" id="data">
+    <select name="" id="select"></select>
+    <div id="buttonarea">
+        <button>Přidej</button>
+        <button>Uprav</button>
+        <button>Potvrď úpravu</button>
+        <button>Smaž</button>    
+    </div>
+
     <script>
+        let editid = 0;
+        let inputN = document.getElementById('name');
+        let inputD = document.getElementById('data');
+        let select = document.getElementById('select');
+        let buttons = document.querySelectorAll('#buttonarea button');
+
+        buttons[0].addEventListener("click",PostData);
+        buttons[1].addEventListener("click",NactiEdit);
+        buttons[2].addEventListener("click",PutData);
+        buttons[3].addEventListener("click",DeleteData);
+
+
+
+        NactiData();
         //PostData();
+        //PatchData();
 
-        PatchData();
+        async function DeleteData() {
+            let response = await fetch(`https://api.restful-api.dev/objects/${select.value}`,{
+                method: "Delete",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            })
+            //smazat ze selectu
+            //smazat id z localStorage
+            console.log(response);
+            let json = await response.json();
+            console.log(json);
+        }
 
-        async function PatchData() {
-            let response = await fetch("https://api.restful-api.dev/objects/ff808181932badb60196a587a6424467",{
-                method: "PATCH",
+        function NactiEdit()
+        {
+            fetch(`https://api.restful-api.dev/objects/${select.value}`).then(
+                (res) => res.json()
+            ).then(
+                function(objekt)
+                {
+                    editid = objekt.id;
+                    inputN.value = objekt.name;
+                    let text = JSON.stringify(objekt.data);
+                    inputD.value = text.slice(1,text.length-1);
+                }
+            )
+        }
+
+        function NactiData()
+        {
+            let text = window.localStorage.getItem('id').split(",");
+            for (let index = 0; index < text.length; index++) {
+                let option = document.createElement('option');
+                option.value = text[index];
+                option.textContent = text[index];
+                select.appendChild(option)
+            }
+
+        }
+
+        async function PutData() {
+            let objektdata = JSON.parse(`{${inputD.value}}`);
+            let response = await fetch(`https://api.restful-api.dev/objects/${editid}`,{
+                method: "Put",
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    name: "DeltaSuperBook",
-                   
+                    name: inputN.value,
+                    data: objektdata
                 })
             })
 
@@ -31,6 +97,10 @@
         }
 
         async function PostData() {
+            //data input: price:500,color:black
+
+            let objektdata = JSON.parse(`{${inputD.value}}`);
+            console.log(objektdata);
             let response = await fetch("https://api.restful-api.dev/objects",{
                 method: "Post",
                 headers: {
@@ -38,17 +108,18 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    name: "SuperBook",
-                    data: {
-                        price: 200,
-                        year: 2025
-                    }
+                    name: inputN.value,
+                    data: objektdata
                 })
             })
 
             console.log(response);
             let json = await response.json();
             console.log(json);
+            
+            //uloží id do local storage
+            window.localStorage.setItem("id",(window.localStorage.getItem('id')) ? window.localStorage.getItem('id') +","+ json.id : json.id);
+            NactiData();
         }
     </script>
 </body>
