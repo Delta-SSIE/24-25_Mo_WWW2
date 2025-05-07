@@ -7,12 +7,94 @@
 </head>
 <body>
 
+    <input type="text" id="name">
+    <input type="text" id="data">
+    <select name="" id="selection"></select>
+
+    <div id="btnarea">
+        <button>Přidej</button>
+        <button>Smaž</button>
+        <button>Uprav</button>
+        <button>Potvrd Úpravu</button>
+    </div>
+
     <script>
-        //Novyzarizeni();
-        Upravzarizeni();
+        let inputN = document.getElementById('name');
+        let inputD = document.getElementById('data')
+        let select = document.getElementById('selection')
+        let btns = document.querySelectorAll('#btnarea button');
+
+        btns[0].addEventListener("click",Novyzarizeni);
+        btns[2].addEventListener("click",NactiEditInput)
+        btns[3].addEventListener("click",Upravzarizeni)
+        btns[1].addEventListener("click",Smazzarizeni)
+
+        NactiData();
+
+        async function Smazzarizeni() {
+            const reponse = await fetch(`https://api.restful-api.dev/objects/${select.value}`,
+            {
+                method: 'DELETE',
+                headers: {
+                     'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+                });
+            const content = await reponse.json();
+            console.log(content);
+            if(window.localStorage.getItem('id'))
+            {
+                let id = localStorage.getItem('id').split(";")
+                window.localStorage.clear();
+                for (let index = 0; index < id.length; index++) {
+                    if(id[index] != select.value)
+                    {
+                        if(id[index])
+                        {
+                            window.localStorage.setItem('id',(window.localStorage.getItem('id')) ? window.localStorage.getItem('id') + ";" + id[index] : id[index]); 
+                        }
+                    }
+                }
+            }
+            NactiData();
+            inputN.value = null;
+            inputD.value = null;
+
+
+        }
+
+        function NactiEditInput()
+        {
+            fetch(`https://api.restful-api.dev/objects/${select.value}`).then(
+                (res) => res.json()
+            ).then(
+                function(data)
+                {
+                    inputN.value = data.name;
+                    inputD.value = JSON.stringify(data.data).slice(1,JSON.stringify(data.data).length-1);
+                }
+            )
+        }
+
+        function NactiData()
+        {
+            select.textContent = "";
+            if(window.localStorage.getItem('id'))
+            {
+                let id = localStorage.getItem('id').split(";")
+                for (let index = 0; index < id.length; index++) {
+                    let option = document.createElement('option');
+                    option.value = id[index];
+                    option.textContent = id[index];
+                    select.appendChild(option);
+                    
+                }
+
+            }
+        }
 
         async function Upravzarizeni() {
-            const reponse = await fetch('https://api.restful-api.dev/objects/ff808181932badb601968654f549159c',
+            const reponse = await fetch(`https://api.restful-api.dev/objects/${select.value}`,
             {
                 method: 'PUT',
                 headers: {
@@ -20,18 +102,18 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    name: "Delta book mega",
-                    data: {
-                        year: 2030,
-                        message: "MEGA"
-                    }
-                })
-            });
+                    name: inputN.value,
+                    data: JSON.parse(`{${inputD.value}}`)
+                    })
+                });
             const content = await reponse.json();
             console.log(content);
-            }
+        }
         
         async function Novyzarizeni() {
+           //"vlastnost":hodnota (pokud je hodnota string tak "hodnota")
+           //"price":100, "storage":"Pardubice"
+
             const reponse = await fetch('https://api.restful-api.dev/objects',
             {
                 method: 'POST',
@@ -40,16 +122,16 @@
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    name: "Delta book",
-                    data: {
-                        year: 2025,
-                        message: "tadaaaa"
-                    }
+                    name: inputN.value,
+                    data: JSON.parse(`{${inputD.value}}`)
                 })
             });
             const content = await reponse.json();
             console.log(content);
-            }
+
+            window.localStorage.setItem('id',(window.localStorage.getItem('id') ? window.localStorage.getItem('id') + ";" + content.id : content.id));
+            NactiData();
+        }
         
     </script>
 </body>
